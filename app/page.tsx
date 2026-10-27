@@ -1,6 +1,7 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Lightbox from "@/components/Lightbox";
+import { site } from "@/lib/content";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Struggles from "@/components/sections/Struggles";
@@ -26,7 +27,8 @@ export default function Home() {
         <Faq />
       </main>
       <Footer />
-      <Lightbox />
+      {/* Trailer popup, only needed while the video is shown. */}
+      {site.showTrailer && <Lightbox />}
     </>
   );
 }

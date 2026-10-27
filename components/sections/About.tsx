@@ -2,7 +2,7 @@
 
 import Icon from "@/components/ui/Icon";
 import Reveal from "@/components/ui/Reveal";
-import { about } from "@/lib/content";
+import { about, site } from "@/lib/content";
 import { useLightbox } from "@/store/lightbox";
 
 const pillarIcons = ["spark", "people", "leaf"] as const;
@@ -51,6 +51,8 @@ export default function About() {
           <p className="mt-4 max-w-prose text-lg leading-relaxed text-white/75">{about.lead}</p>
         </Reveal>
 
+        {/* Video block: hidden while site.showTrailer is false (code kept for later). */}
+        {site.showTrailer && (
         <Reveal className="mt-12">
           <button
             type="button"
@@ -69,6 +71,7 @@ export default function About() {
             </span>
           </button>
         </Reveal>
+        )}
 
         <Reveal stagger className="mt-14 grid gap-10 sm:grid-cols-3 sm:gap-8">
           {about.pillars.map((p, i) => (

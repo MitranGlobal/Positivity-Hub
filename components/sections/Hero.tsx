@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import phLogo from "@/public/positivity-hub-logo.png";
 import Icon from "@/components/ui/Icon";
 import { WavyBackground } from "@/components/ui/wavy-background";
-import { hero } from "@/lib/content";
+import { hero, site } from "@/lib/content";
 import { useLightbox } from "@/store/lightbox";
 import { usePrefersReducedMotion } from "@/lib/useReducedMotion";
 
@@ -64,10 +64,13 @@ export default function Hero() {
               <a href="#pricing" className="btn-primary shadow-glow">
                 Join the journey
               </a>
-              <button type="button" className="btn-ghost bg-white/60" onClick={() => openLightbox({ kind: "trailer", title: "Course trailer" })}>
-                <Icon name="play" className="h-4 w-4" />
-                Watch trailer
-              </button>
+              {/* "Watch trailer" is hidden while site.showTrailer is false. */}
+              {site.showTrailer && (
+                <button type="button" className="btn-ghost bg-white/60" onClick={() => openLightbox({ kind: "trailer", title: "Course trailer" })}>
+                  <Icon name="play" className="h-4 w-4" />
+                  Watch trailer
+                </button>
+              )}
             </motion.div>
             <motion.div {...rise(4)} className="mt-10">
               <p className="text-sm text-ink-soft">{hero.proofLabel}</p>

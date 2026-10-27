@@ -7,6 +7,12 @@ export const site = {
   name: "Positivity Hub",
   by: "Mitran Global",
   /**
+   * Video/trailer is hidden for now. Set to true to bring back the video block in
+   * the "Build confidence" section, the hero's "Watch trailer" button and the
+   * trailer popup. All of that code is kept and works as before.
+   */
+  showTrailer: false,
+  /**
    * Set this to a video URL (e.g. "/trailer.mp4" in /public, or a hosted .mp4)
    * and the "Watch trailer" lightbox will play it. While empty, the lightbox
    * shows a "coming soon" note instead of a broken player.
