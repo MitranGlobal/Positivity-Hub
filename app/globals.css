@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-mist font-sans text-ink antialiased;
+    overflow-x: clip;
+  }
+  ::selection {
+    @apply bg-marigold-soft text-ink;
+  }
+  :focus-visible {
+    outline: 3px solid #b87a0e;
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full px-6 text-[15px] font-semibold transition-colors duration-200;
+  }
+  .btn-primary {
+    @apply btn bg-marigold text-ink hover:bg-[#f0a81c];
+  }
+  .btn-ink {
+    @apply btn bg-ink text-white hover:bg-lagoon-night;
+  }
+  .btn-ghost {
+    @apply btn border border-ink/25 text-ink hover:border-ink hover:bg-white/60;
+  }
+  .section {
+    @apply py-20 sm:py-28;
+  }
+  .section-title {
+    @apply font-display text-display-lg text-ink;
+    text-wrap: balance;
+  }
+  .section-lead {
+    @apply mt-4 max-w-prose text-lg leading-relaxed text-ink-soft;
+    text-wrap: pretty;
+  }
+}
