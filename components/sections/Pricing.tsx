@@ -1,5 +1,6 @@
 import Icon from "@/components/ui/Icon";
 import Price from "@/components/ui/Price";
+import BenefitList from "@/components/ui/BenefitList";
 import Reveal from "@/components/ui/Reveal";
 import { plans, pricing } from "@/lib/content";
 
@@ -33,15 +34,23 @@ export default function Pricing() {
                   <Price price={plan.price} was={plan.was} tone={dark ? "light" : "ink"} />
                 </div>
                 <div className="h-8" aria-hidden="true" />
-                {plan.intro && <p className={`mb-4 text-sm font-semibold ${dark ? "text-marigold" : "text-lagoon-deep"}`}>{plan.intro}</p>}
-                <ul className="space-y-3.5">
-                  {plan.benefits.map((b) => (
-                    <li key={b} className="flex items-start gap-3">
-                      <Icon name="check" className={`mt-0.5 h-5 w-5 shrink-0 ${dark ? "text-marigold" : "text-lagoon"}`} />
-                      <span>{b}</span>
-                    </li>
-                  ))}
-                </ul>
+                <BenefitList groups={plan.groups} tone={dark ? "light" : "ink"} />
+                {plan.notIncluded && (
+                  <div className="mt-7">
+                    <p className="mb-3 text-sm font-semibold text-ink-faint">{plan.notIncluded.heading}</p>
+                    <ul className="space-y-2.5 text-ink-faint">
+                      {plan.notIncluded.items.map((b) => (
+                        <li key={b.title} className="flex items-start gap-3">
+                          <span className="mt-[9px] h-px w-3 shrink-0 bg-current" aria-hidden="true" />
+                          <span>
+                            <span className="sr-only">Not included: </span>
+                            {b.title}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
                 <div className="min-h-9 flex-1" aria-hidden="true" />
                 <a href={href} className={`${dark ? "btn-primary" : "btn-ink"} w-full`} data-plan={plan.id}>
                   {plan.cta}

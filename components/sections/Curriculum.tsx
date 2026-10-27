@@ -1,5 +1,6 @@
 import Icon from "@/components/ui/Icon";
 import Price from "@/components/ui/Price";
+import BenefitList from "@/components/ui/BenefitList";
 import Reveal from "@/components/ui/Reveal";
 import { curriculum, plans } from "@/lib/content";
 
@@ -30,18 +31,13 @@ export default function Curriculum() {
 
           <aside aria-label="Course price" className="lg:sticky lg:top-28 lg:self-start">
             <div className="rounded-panel bg-ink p-7 text-white shadow-lift sm:p-9">
-              <p className="text-white/70">{featured.name}, all five modules</p>
+              <p className="text-white/70">{featured.name}</p>
               <div className="mt-4">
                 <Price price={featured.price} was={featured.was} tone="light" />
               </div>
-              <ul className="mt-7 space-y-3">
-                {["Lifetime access", "Certificate included", "24/7 support"].map((b) => (
-                  <li key={b} className="flex items-center gap-3">
-                    <Icon name="check" className="h-5 w-5 shrink-0 text-marigold" />
-                    {b}
-                  </li>
-                ))}
-              </ul>
+              <div className="mt-7">
+                <BenefitList groups={featured.groups} tone="light" compact />
+              </div>
               <a href="#pricing" className="btn-primary mt-8 w-full">
                 Start your journey
               </a>

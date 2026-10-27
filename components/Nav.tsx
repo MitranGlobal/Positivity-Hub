@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Logo from "@/components/ui/Logo";
 import Icon from "@/components/ui/Icon";
-import { nav } from "@/lib/content";
+import { nav, site } from "@/lib/content";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -59,8 +59,8 @@ export default function Nav() {
                 {item.label}
               </a>
             ))}
-            <a href="#pricing" className="btn-ink ml-3 min-h-[44px] px-5">
-              Join now
+            <a href={site.registerUrl} className="btn-ink ml-3 min-h-[44px] px-5">
+              Register now
             </a>
           </nav>
           <button
@@ -127,8 +127,8 @@ export default function Nav() {
                   </motion.a>
                 ))}
               </nav>
-              <a href="#pricing" onClick={() => setOpen(false)} className="btn-primary mt-auto w-full">
-                Join now
+              <a href={site.registerUrl} onClick={() => setOpen(false)} className="btn-primary mt-auto w-full">
+                Register now
               </a>
             </motion.div>
           </>

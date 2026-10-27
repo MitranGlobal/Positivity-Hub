@@ -16,7 +16,7 @@ export default function Price({ price, was, size = "lg", tone = "ink" }: { price
           </s>
         )}
       </p>
-      <p className={`mt-2 text-sm ${muted}`}>One-time payment, lifetime access</p>
+      <p className={`mt-2 text-sm ${muted}`}>One-time payment</p>
       {was && (
         <p className={`mt-3 inline-flex rounded-chip px-2.5 py-1 text-sm font-semibold ${tone === "light" ? "bg-marigold text-ink" : "bg-marigold-soft text-ink"}`}>
           Save {formatINR(save)} ({pct}% off)

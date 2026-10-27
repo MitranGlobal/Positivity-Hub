@@ -12,6 +12,8 @@ export const site = {
    * shows a "coming soon" note instead of a broken player.
    */
   trailerSrc: "",
+  /** Where "Register now" sends people. */
+  registerUrl: "https://hub.mitranglobal.com/web/checkout/6ace0ed5f506917ea09e28b5",
 };
 
 export const nav = [
@@ -21,7 +23,7 @@ export const nav = [
 ];
 
 export const hero = {
-  title: ["Elevate your", "mind & spirit"],
+  title: "Positivity Hub",
   lead: "Unlock the ultimate mental wellness journey that has transformed the lives of countless participants.",
   practices: ["Mindfulness practices", "Compassionate coaching", "Holistic approaches", "Supportive community"],
   outcomes: [
@@ -126,6 +128,43 @@ export const curriculum = {
   ],
 };
 
+export type Benefit = { title: string; detail?: string; list?: string[] };
+export type BenefitGroup = { heading: string; items: Benefit[] };
+
+/** The client's current benefits. */
+export const coreBenefits: BenefitGroup = {
+  heading: "What your child receives",
+  items: [
+    {
+      title: "3 personalised handholding sessions",
+      detail:
+        "Guided by a trained and certified Transformation Coach. Two sessions are for parent and child together, and one is exclusively for the child.",
+    },
+    {
+      title: "Personalised well-being report",
+      detail: "A tailor-made report on your child's overall well-being, strengths and areas for growth.",
+    },
+  ],
+};
+
+export const bonusBenefits: BenefitGroup = {
+  heading: "Bonus",
+  items: [
+    {
+      title: "Micro lessons in 6 areas of challenge",
+      detail: "Short, focused lessons that help your child work through the challenges teens face most.",
+    },
+    {
+      title: "3 flagship courses",
+      list: ["I Love Exams", "Accelerated Learning Methodologies", "Positive Mind Mastery"],
+    },
+    {
+      title: "Group masterclasses",
+      detail: "Interactive sessions on confidence, personal growth and building a positive mindset.",
+    },
+  ],
+};
+
 export type Plan = {
   id: "foundation" | "complete";
   name: string;
@@ -134,12 +173,15 @@ export type Plan = {
   was?: number;
   featured?: boolean;
   cta: string;
-  /** TODO(client): paste the payment / checkout link for this plan (e.g. a Razorpay payment page). */
+  /** TODO(client): payment / checkout link for this plan. Empty keeps the button on the pricing section. */
   checkoutUrl: string;
-  intro?: string;
-  benefits: string[];
+  groups: BenefitGroup[];
+  /** Shown muted, to make clear what the higher plan adds. */
+  notIncluded?: BenefitGroup;
 };
 
+// TODO(client): confirm the split. Currently the ₹1,499 plan has the core benefits
+// and the ₹1,999 plan adds the bonus.
 export const plans: Plan[] = [
   {
     id: "foundation",
@@ -148,32 +190,19 @@ export const plans: Plan[] = [
     price: 1499,
     cta: "Start with Foundation",
     checkoutUrl: "",
-    benefits: [
-      "Understanding mental health basics",
-      "Access to calming resources",
-      "Community support group access",
-      "Lifetime access",
-      "30-day money-back guarantee",
-    ],
+    groups: [coreBenefits],
+    notIncluded: { heading: "Bonus, in the Complete course", items: bonusBenefits.items },
   },
   {
     id: "complete",
     name: "Complete course",
-    tagline: "Enhance your understanding with deeper insights.",
+    tagline: "Everything in Foundation, plus the full bonus.",
     price: 1999,
     was: 4999,
     featured: true,
     cta: "Enrol in the Complete course",
     checkoutUrl: "",
-    intro: "Everything in Foundation, plus:",
-    benefits: [
-      "All five course modules",
-      "Comprehensive mental health strategies",
-      "In-depth resources & tools",
-      "Access to expert-led webinars",
-      "Certificate included",
-      "24/7 support",
-    ],
+    groups: [coreBenefits, bonusBenefits],
   },
 ];
 
@@ -254,7 +283,7 @@ export const quiz = {
       options: [
         { label: "On my own, in short bursts", weight: 0 },
         { label: "With a community alongside me", weight: 1 },
-        { label: "With live webinars and a certificate", weight: 2 },
+        { label: "With live group masterclasses", weight: 2 },
       ] as QuizOption[],
     },
   ],
@@ -262,31 +291,21 @@ export const quiz = {
 
 export const faqs = [
   {
-    q: "How long do I have access?",
-    a: "Both plans include lifetime access. Learn at your own pace and come back to the material whenever you need it.",
-  },
-  {
-    q: "What if the course isn't right for me?",
-    a: "Every plan comes with a 30-day money-back guarantee. If it isn't helping, contact us within 30 days of purchase for a full refund.",
+    q: "Who leads the handholding sessions?",
+    a: "A trained and certified Transformation Coach. Two of the three sessions are for parent and child together, and one is exclusively for the child.",
   },
   {
     q: "What's the difference between the two plans?",
-    a: "Foundation covers mental health basics, calming resources and community access. The Complete course adds all five modules, expert-led webinars, in-depth tools, a certificate and 24/7 support.",
+    a: "Foundation includes 3 personalised handholding sessions and a personalised well-being report. The Complete course adds the bonus: micro lessons in 6 areas of challenge, 3 flagship courses (I Love Exams, Accelerated Learning Methodologies and Positive Mind Mastery) and group masterclasses.",
+  },
+  {
+    q: "What if the course isn't right for us?",
+    a: "Every plan comes with a 30-day money-back guarantee. If it isn't helping, contact us within 30 days of purchase for a full refund.",
   },
   {
     q: "Is this a replacement for therapy?",
-    a: "No. The course teaches wellbeing skills and is not a medical or clinical service. If you're struggling, please also speak with a qualified mental health professional.",
-  },
-  {
-    q: "Do I get a certificate?",
-    a: "Yes, a certificate is included with the Complete course.",
+    a: "No. The programme builds well-being skills and is not a medical or clinical service. If your child is struggling, please also speak with a qualified mental health professional.",
   },
 ];
-
-export const helpline = {
-  name: "Tele-MANAS",
-  numbers: ["14416", "1-800-891-4416"],
-  note: "If you are in crisis or thinking about harming yourself, call India's free 24/7 Tele-MANAS helpline.",
-};
 
 export const formatINR = (n: number) => `₹${n.toLocaleString("en-IN")}`;

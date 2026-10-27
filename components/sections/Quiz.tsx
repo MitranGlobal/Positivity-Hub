@@ -86,8 +86,8 @@ export default function Quiz() {
                   </p>
                   <p className="mt-4 max-w-prose leading-relaxed text-ink-soft">
                     {plan.id === "complete"
-                      ? "You're ready to go deeper. The Complete course gives you all five modules, expert-led webinars, a certificate and 24/7 support."
-                      : "A gentle, practical start. Foundation covers the basics, calming resources and community support, and you can upgrade later."}
+                      ? "You're ready to go deeper. The Complete course adds micro lessons, 3 flagship courses and group masterclasses to the personalised coaching sessions and well-being report."
+                      : "A focused start. Foundation gives your child 3 personalised handholding sessions with a certified Transformation Coach and a personalised well-being report."}
                   </p>
                   <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                     <a href="#pricing" className="btn-primary">

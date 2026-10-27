@@ -40,8 +40,7 @@ export default function Hero() {
         <div className="container relative flex flex-1 flex-col justify-center pb-10 pt-10 sm:pt-14 lg:pb-14">
           <div className="max-w-[40rem]">
             <motion.h1 {...rise(0)} className="font-display text-display-xl text-ink">
-              <span className="block">{hero.title[0]}</span>
-              <span className="block text-lagoon-deep">{hero.title[1]}</span>
+              {hero.title}
             </motion.h1>
             <motion.p {...rise(1)} className="mt-6 max-w-[34rem] text-lg leading-relaxed text-ink-soft sm:text-xl">
               {hero.lead}
