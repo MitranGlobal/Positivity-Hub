@@ -72,7 +72,7 @@ export default function Testimonials() {
           </div>
 
           <div className="mt-8 flex flex-col-reverse gap-5 border-t border-mist-line pt-6 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex flex-wrap gap-2" role="group" aria-label="Choose a review">
+            <div className="flex flex-wrap gap-2" role="group" aria-label="Choose a testimonial">
               {items.map((it, i) => (
                 <button
                   key={it.name}
@@ -88,10 +88,10 @@ export default function Testimonials() {
               ))}
             </div>
             <div className="flex gap-2">
-              <button type="button" onClick={() => go(index - 1)} className="grid h-11 w-11 place-items-center rounded-full border border-ink/20 hover:border-ink" aria-label="Previous review">
+              <button type="button" onClick={() => go(index - 1)} className="grid h-11 w-11 place-items-center rounded-full border border-ink/20 hover:border-ink" aria-label="Previous testimonial">
                 <Icon name="arrow-left" />
               </button>
-              <button type="button" onClick={() => go(index + 1)} className="grid h-11 w-11 place-items-center rounded-full border border-ink/20 hover:border-ink" aria-label="Next review">
+              <button type="button" onClick={() => go(index + 1)} className="grid h-11 w-11 place-items-center rounded-full border border-ink/20 hover:border-ink" aria-label="Next testimonial">
                 <Icon name="arrow-right" />
               </button>
             </div>
@@ -105,10 +105,7 @@ export default function Testimonials() {
 function Quote({ item, tone }: { item: (typeof testimonials.items)[number]; tone: string }) {
   return (
     <figure className="select-none">
-      <p className="text-marigold-deep" aria-label="Rated 5 out of 5">
-        ★★★★★
-      </p>
-      <blockquote className="mt-4 font-display text-[clamp(1.3rem,2.6vw,2rem)] leading-[1.35] text-ink" style={{ textWrap: "pretty" }}>
+      <blockquote className="text-[17px] leading-relaxed text-ink sm:font-display sm:text-[clamp(1.1rem,1.8vw,1.45rem)] sm:leading-[1.5]" style={{ textWrap: "pretty" }}>
         “{item.quote}”
       </blockquote>
       <figcaption className="mt-7 flex flex-wrap items-center gap-x-8 gap-y-4">
@@ -120,10 +117,6 @@ function Quote({ item, tone }: { item: (typeof testimonials.items)[number]; tone
             <span className="block font-semibold text-ink">{item.name}</span>
             <span className="block text-sm text-ink-soft">{item.role}</span>
           </span>
-        </span>
-        <span className="text-sm">
-          <span className="block text-ink-faint">Key achievement</span>
-          <span className="block font-medium text-lagoon-deep">{item.achievement}</span>
         </span>
       </figcaption>
     </figure>

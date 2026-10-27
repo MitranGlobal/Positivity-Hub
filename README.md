@@ -7,7 +7,7 @@ Single-page site for the Positivity Hub online mental wellness course by Mitran 
 - Next.js 14 (App Router, TypeScript)
 - Tailwind CSS v3 — design tokens in `tailwind.config.ts`
 - Aceternity UI Wavy Background — hero background (`components/ui/wavy-background.tsx`, canvas + `simplex-noise`)
-- Framer Motion — nav, mobile drawer, testimonials, lightbox, quiz transitions
+- Framer Motion — nav, mobile drawer, testimonials, lightbox
 - GSAP + ScrollTrigger — scroll reveals (`components/ui/Reveal.tsx`)
 - Zustand — lightbox state (`store/lightbox.ts`)
 - Vercel — deployment target
@@ -30,7 +30,6 @@ Before launch, fill in:
 
 - `plans[].checkoutUrl` — the payment link for each plan (e.g. a Razorpay payment page). Until set, the plan buttons stay on the pricing section.
 - `site.trailerSrc` — the trailer video URL (or put `trailer.mp4` in `/public` and use `"/trailer.mp4"`). Until set, "Watch trailer" shows a "coming soon" panel.
-- `testimonials.items` — replace with verified reviews from real participants.
 
 ## Deploy to Vercel
 

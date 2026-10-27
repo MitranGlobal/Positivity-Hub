@@ -6,7 +6,6 @@ import Features from "@/components/sections/Features";
 import About from "@/components/sections/About";
 import Struggles from "@/components/sections/Struggles";
 import Curriculum from "@/components/sections/Curriculum";
-import Quiz from "@/components/sections/Quiz";
 import Testimonials from "@/components/sections/Testimonials";
 import Pricing from "@/components/sections/Pricing";
 import Faq from "@/components/sections/Faq";
@@ -24,7 +23,6 @@ export default function Home() {
         <About />
         <Struggles />
         <Curriculum />
-        <Quiz />
         <Testimonials />
         <Pricing />
         <Faq />
