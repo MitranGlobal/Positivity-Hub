@@ -24,11 +24,11 @@ npm run typecheck
 
 ## Editing content
 
-All copy, prices and plan benefits live in `lib/content.ts`.
+All copy, the price and the program benefits live in `lib/content.ts`.
 
 Before launch, fill in:
 
-- `plans[].checkoutUrl` — the payment link for each plan (e.g. a Razorpay payment page). Until set, the plan buttons stay on the pricing section.
+- `site.registerUrl` — the checkout link used by every Register now / Enroll now button.
 - `site.showTrailer` — the video block, "Watch trailer" button and trailer popup are hidden (`false`). Set to `true` to bring them back, and set `site.trailerSrc` to the video URL (or put `trailer.mp4` in `/public` and use `"/trailer.mp4"`).
 
 ## Deploy to Vercel

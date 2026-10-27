@@ -93,7 +93,7 @@ export const curriculum = {
   ],
   emphasis: [
     "Take the first step towards a more confident, emotionally stronger child.",
-    "Connect with MiTran Global to explore the program and enrol your child.",
+    "Connect with MiTran Global to explore the program and enroll your child.",
   ],
 };
 
@@ -134,50 +134,19 @@ export const bonusBenefits: BenefitGroup = {
   ],
 };
 
-export type Plan = {
-  id: "foundation" | "complete";
-  name: string;
-  tagline: string;
-  price: number;
-  was?: number;
-  featured?: boolean;
-  cta: string;
-  /** TODO(client): payment / checkout link for this plan. Empty keeps the button on the pricing section. */
-  checkoutUrl: string;
-  groups: BenefitGroup[];
-  /** Shown muted, to make clear what the higher plan adds. */
-  notIncluded?: BenefitGroup;
+/** The single program offering. */
+export const plan = {
+  name: "Positivity Hub program",
+  tagline: "Everything your child receives, plus every bonus.",
+  price: 1999,
+  was: 4999,
+  cta: "Enroll now",
+  groups: [coreBenefits, bonusBenefits],
 };
 
-// TODO(client): confirm the split. Currently the ₹1,499 plan has the core benefits
-// and the ₹1,999 plan adds the bonus.
-export const plans: Plan[] = [
-  {
-    id: "foundation",
-    name: "Foundation course",
-    tagline: "Ideal for those beginning their mental health journey.",
-    price: 1499,
-    cta: "Start with Foundation",
-    checkoutUrl: "",
-    groups: [coreBenefits],
-    notIncluded: { heading: "Bonus, in the Complete course", items: bonusBenefits.items },
-  },
-  {
-    id: "complete",
-    name: "Complete course",
-    tagline: "Everything in Foundation, plus the full bonus.",
-    price: 1999,
-    was: 4999,
-    featured: true,
-    cta: "Enrol in the Complete course",
-    checkoutUrl: "",
-    groups: [coreBenefits, bonusBenefits],
-  },
-];
-
 export const pricing = {
-  title: "Choose your plan",
-  lead: "Select the plan that aligns with your mental health journey and unlock a world of transformative insights.",
+  title: "Enroll your teen",
+  lead: "One program with everything included: personalised coaching, a well-being report and every bonus.",
 };
 
 // Student testimonials, as published on https://www.mitranglobal.com/

@@ -6,7 +6,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Positivity Hub — Online mental wellness course by Mitran Global",
   description:
-    "Elevate your mind and spirit with an online mental wellness course: mindfulness, coping strategies for anxiety, resilience and healthier relationships. Plans from ₹1,499.",
+    "MiTran Global Positivity Hub helps teens aged 11 to 17 build confidence, manage emotions, overcome challenges and develop a positive mindset. ₹1,999.",
   openGraph: {
     title: "Positivity Hub",
     description: "An online mental wellness course by Mitran Global.",

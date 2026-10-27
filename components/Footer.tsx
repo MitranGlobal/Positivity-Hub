@@ -8,11 +8,8 @@ export default function Footer() {
       <div className="container py-16 sm:py-20">
         <div className="max-w-2xl">
           <h2 className="font-display text-display-lg" style={{ textWrap: "balance" }}>
-            Your calmer, steadier self starts with one step.
+            Your teen’s journey to confidence and emotional strength starts here.
           </h2>
-          <a href="#pricing" className="btn-primary mt-8">
-            Join the journey
-          </a>
         </div>
 
         <div className="mt-16 flex flex-col gap-6 border-t border-white/15 pt-8 md:flex-row md:items-center md:justify-between">
@@ -31,7 +28,7 @@ export default function Footer() {
           </nav>
         </div>
         <p className="mt-8 max-w-prose text-sm leading-relaxed text-white/55">
-          {site.name} is an educational well-being programme and is not a substitute for diagnosis or treatment by a qualified mental health professional.
+          {site.name} is an educational well-being program and is not a substitute for diagnosis or treatment by a qualified mental health professional.
         </p>
         <p className="mt-3 text-sm text-white/55">
           © {year} {site.by}. All rights reserved.

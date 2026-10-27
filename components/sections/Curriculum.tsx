@@ -2,10 +2,9 @@ import Icon from "@/components/ui/Icon";
 import Price from "@/components/ui/Price";
 import BenefitList from "@/components/ui/BenefitList";
 import Reveal from "@/components/ui/Reveal";
-import { curriculum, plans, site } from "@/lib/content";
+import { curriculum, plan, site } from "@/lib/content";
 
 export default function Curriculum() {
-  const featured = plans.find((p) => p.featured)!;
   return (
     <section id="course" aria-labelledby="course-title" className="section bg-white">
       <div className="container">
@@ -38,15 +37,15 @@ export default function Curriculum() {
 
           <aside aria-label="Course price" className="lg:sticky lg:top-28 lg:self-start">
             <div className="rounded-panel bg-ink p-7 text-white shadow-lift sm:p-9">
-              <p className="text-white/70">{featured.name}</p>
+              <p className="text-white/70">{plan.name}</p>
               <div className="mt-4">
-                <Price price={featured.price} was={featured.was} tone="light" />
+                <Price price={plan.price} was={plan.was} tone="light" />
               </div>
               <div className="mt-7">
-                <BenefitList groups={featured.groups} tone="light" compact />
+                <BenefitList groups={plan.groups} tone="light" compact />
               </div>
-              <a href="#pricing" className="btn-primary mt-8 w-full">
-                Start your journey
+              <a href={site.registerUrl} className="btn-primary mt-8 w-full">
+                Enroll now
               </a>
               <p className="mt-4 flex items-center justify-center gap-2 text-sm text-white/70">
                 <Icon name="shield" className="h-4 w-4" />

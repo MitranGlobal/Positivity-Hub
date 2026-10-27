@@ -1,7 +1,7 @@
 import Price from "@/components/ui/Price";
 import BenefitList from "@/components/ui/BenefitList";
 import Reveal from "@/components/ui/Reveal";
-import { plans, pricing } from "@/lib/content";
+import { plan, pricing, site } from "@/lib/content";
 
 export default function Pricing() {
   return (
@@ -14,51 +14,22 @@ export default function Pricing() {
           <p className="section-lead mx-auto">{pricing.lead}</p>
         </Reveal>
 
-        <Reveal stagger className="mx-auto mt-14 grid max-w-4xl items-stretch gap-6 md:grid-cols-2">
-          {plans.map((plan) => {
-            const dark = !!plan.featured;
-            const href = plan.checkoutUrl || "#pricing";
-            return (
-              <article
-                key={plan.id}
-                aria-labelledby={`plan-${plan.id}`}
-                className={`relative flex flex-col rounded-panel p-7 sm:p-9 ${dark ? "bg-ink text-white shadow-lift md:order-2" : "border border-mist-line bg-mist md:order-1"}`}
-              >
-                {dark && <span className="absolute -top-3.5 left-7 rounded-full bg-marigold px-3.5 py-1 text-sm font-semibold text-ink sm:left-9">Most popular</span>}
-                <h3 id={`plan-${plan.id}`} className={`font-display text-display-md ${dark ? "text-white" : "text-ink"}`}>
-                  {plan.name}
-                </h3>
-                <p className={`mt-2 md:min-h-[3rem] ${dark ? "text-white/70" : "text-ink-soft"}`}>{plan.tagline}</p>
-                <div className="mt-6">
-                  <Price price={plan.price} was={plan.was} tone={dark ? "light" : "ink"} />
-                </div>
-                <div className="h-8" aria-hidden="true" />
-                <BenefitList groups={plan.groups} tone={dark ? "light" : "ink"} />
-                {plan.notIncluded && (
-                  <div className="mt-7">
-                    <p className="mb-3 text-sm font-semibold text-ink-faint">{plan.notIncluded.heading}</p>
-                    <ul className="space-y-2.5 text-ink-faint">
-                      {plan.notIncluded.items.map((b) => (
-                        <li key={b.title} className="flex items-start gap-3">
-                          <span className="mt-[9px] h-px w-3 shrink-0 bg-current" aria-hidden="true" />
-                          <span>
-                            <span className="sr-only">Not included: </span>
-                            {b.title}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                <div className="min-h-9 flex-1" aria-hidden="true" />
-                <a href={href} className={`${dark ? "btn-primary" : "btn-ink"} w-full`} data-plan={plan.id}>
-                  {plan.cta}
-                </a>
-              </article>
-            );
-          })}
+        <Reveal className="mx-auto mt-14 max-w-xl">
+          <article aria-labelledby="plan-title" className="rounded-panel bg-ink p-7 text-white shadow-lift sm:p-10">
+            <h3 id="plan-title" className="font-display text-display-md text-white">
+              {plan.name}
+            </h3>
+            <p className="mt-2 text-white/70">{plan.tagline}</p>
+            <div className="mt-6">
+              <Price price={plan.price} was={plan.was} tone="light" />
+            </div>
+            <div className="h-8" aria-hidden="true" />
+            <BenefitList groups={plan.groups} tone="light" />
+            <a href={site.registerUrl} className="btn-primary mt-10 w-full">
+              {plan.cta}
+            </a>
+          </article>
         </Reveal>
-
       </div>
     </section>
   );

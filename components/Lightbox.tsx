@@ -96,9 +96,9 @@ export default function Lightbox() {
             <div className="grid h-full place-items-center px-6 py-12 text-center text-white">
               <div>
                 <p className="font-display text-display-md">The {about.trailer.length} is on its way</p>
-                <p className="mx-auto mt-3 max-w-md text-white/70">The full preview will be available here soon. In the meantime, you can see what each plan includes.</p>
+                <p className="mx-auto mt-3 max-w-md text-white/70">The full preview will be available here soon. In the meantime, you can see everything the program includes.</p>
                 <a href="#pricing" onClick={close} className="btn-primary mt-6">
-                  See the plans
+                  See what&apos;s included
                 </a>
               </div>
             </div>
