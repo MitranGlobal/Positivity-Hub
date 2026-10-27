@@ -2,7 +2,6 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Lightbox from "@/components/Lightbox";
 import Hero from "@/components/sections/Hero";
-import Features from "@/components/sections/Features";
 import About from "@/components/sections/About";
 import Struggles from "@/components/sections/Struggles";
 import Curriculum from "@/components/sections/Curriculum";
@@ -19,7 +18,6 @@ export default function Home() {
       <Nav />
       <main id="main">
         <Hero />
-        <Features />
         <About />
         <Struggles />
         <Curriculum />

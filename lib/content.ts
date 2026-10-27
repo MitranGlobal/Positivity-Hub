@@ -26,11 +26,6 @@ export const hero = {
   title: "Positivity Hub",
   lead: "Empower your teen to build confidence, manage emotions, overcome challenges, and develop a positive mindset for life.",
   practices: ["Personalised growth guidance", "Emotional resilience building", "Confidence development", "Positive mindset cultivation"],
-  outcomes: [
-    { title: "Achieved calm", note: "Better mental health" },
-    { title: "Lifetime skills", note: "Lasting change" },
-    { title: "Community growth", note: "Unmatched support" },
-  ],
   proofLabel: "Supported by wellness seekers globally",
   stats: [
     { value: "10K+", label: "Participants" },
@@ -38,24 +33,6 @@ export const hero = {
     { value: "95%", label: "Success indicator" },
   ],
 };
-
-export const features = [
-  {
-    title: "Flexible learning",
-    body: "Engage at your own pace with resources tailored to your journey.",
-    icon: "clock",
-  },
-  {
-    title: "Transformational impact",
-    body: "Methods rooted in psychological principles with successful case histories.",
-    icon: "spark",
-  },
-  {
-    title: "Guided expertise",
-    body: "Receive expert feedback and strategies from licensed wellness coaches.",
-    icon: "people",
-  },
-] as const;
 
 export const about = {
   title: "Build confidence, strengthen your mind",

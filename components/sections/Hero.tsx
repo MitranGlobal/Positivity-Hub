@@ -87,16 +87,6 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        <div className="container relative pb-6">
-          <ul className="grid gap-px overflow-hidden rounded-panel border border-mist-line bg-mist-line sm:grid-cols-3">
-            {hero.outcomes.map((o) => (
-              <li key={o.title} className="bg-white/90 px-6 py-5">
-                <p className="font-display text-xl text-ink">{o.title}</p>
-                <p className="mt-1 text-sm text-ink-soft">{o.note}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
       </WavyBackground>
     </section>
   );
