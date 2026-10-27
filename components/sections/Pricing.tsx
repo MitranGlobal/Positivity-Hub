@@ -1,4 +1,3 @@
-import Icon from "@/components/ui/Icon";
 import Price from "@/components/ui/Price";
 import BenefitList from "@/components/ui/BenefitList";
 import Reveal from "@/components/ui/Reveal";
@@ -60,17 +59,6 @@ export default function Pricing() {
           })}
         </Reveal>
 
-        <div className="mt-10 text-center text-sm text-ink-soft">
-          <p className="inline-flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
-            {pricing.assurances.map((a) => (
-              <span key={a} className="inline-flex items-center gap-2">
-                <Icon name="shield" className="h-4 w-4 text-lagoon" />
-                {a}
-              </span>
-            ))}
-          </p>
-          <p className="mt-3">{pricing.closing}</p>
-        </div>
       </div>
     </section>
   );

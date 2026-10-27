@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Icon from "@/components/ui/Icon";
@@ -110,9 +111,13 @@ function Quote({ item, tone }: { item: (typeof testimonials.items)[number]; tone
       </blockquote>
       <figcaption className="mt-7 flex flex-wrap items-center gap-x-8 gap-y-4">
         <span className="flex items-center gap-3">
-          <span className={`grid h-12 w-12 shrink-0 place-items-center rounded-full font-semibold ${tone}`} aria-hidden="true">
-            {initials(item.name)}
-          </span>
+          {item.photo ? (
+            <Image src={item.photo} alt={item.name} width={56} height={56} className="h-14 w-14 shrink-0 rounded-full object-cover ring-2 ring-white shadow-md" />
+          ) : (
+            <span className={`grid h-14 w-14 shrink-0 place-items-center rounded-full font-semibold ${tone}`} aria-hidden="true">
+              {initials(item.name)}
+            </span>
+          )}
           <span>
             <span className="block font-semibold text-ink">{item.name}</span>
             <span className="block text-sm text-ink-soft">{item.role}</span>
