@@ -2,7 +2,7 @@ import Icon from "@/components/ui/Icon";
 import Price from "@/components/ui/Price";
 import BenefitList from "@/components/ui/BenefitList";
 import Reveal from "@/components/ui/Reveal";
-import { curriculum, plans } from "@/lib/content";
+import { curriculum, plans, site } from "@/lib/content";
 
 export default function Curriculum() {
   const featured = plans.find((p) => p.featured)!;
@@ -13,20 +13,27 @@ export default function Curriculum() {
           <h2 id="course-title" className="section-title">
             {curriculum.title}
           </h2>
-          <p className="section-lead">{curriculum.lead}</p>
         </Reveal>
 
         <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,0.9fr)] lg:gap-14">
-          <Reveal as="ol" stagger className="space-y-3">
-            {curriculum.modules.map((m, i) => (
-              <li key={m.title} className="flex flex-col gap-1.5 rounded-tile bg-mist px-5 py-5 sm:flex-row sm:gap-5 sm:px-7 sm:py-6">
-                <span className="shrink-0 pt-0.5 text-sm sm:w-16 font-semibold text-lagoon-deep">Module {i + 1}</span>
-                <div className="min-w-0">
-                  <h3 className="text-lg font-semibold text-ink sm:text-xl">{m.title}</h3>
-                  <p className="mt-1 leading-relaxed text-ink-soft">{m.body}</p>
-                </div>
-              </li>
-            ))}
+          <Reveal className="lg:self-start">
+            <div className="rounded-panel bg-mist p-7 sm:p-10">
+              <div className="space-y-5 text-lg leading-relaxed text-ink-soft">
+                {curriculum.paragraphs.map((t) => (
+                  <p key={t}>{t}</p>
+                ))}
+              </div>
+              <div className="mt-8 space-y-3 border-t border-mist-line pt-7">
+                {curriculum.emphasis.map((t) => (
+                  <p key={t} className="font-display text-xl leading-snug text-ink sm:text-2xl">
+                    {t}
+                  </p>
+                ))}
+              </div>
+              <a href={site.registerUrl} className="btn-ink mt-8">
+                Register now
+              </a>
+            </div>
           </Reveal>
 
           <aside aria-label="Course price" className="lg:sticky lg:top-28 lg:self-start">

@@ -24,8 +24,8 @@ export const nav = [
 
 export const hero = {
   title: "Positivity Hub",
-  lead: "Unlock the ultimate mental wellness journey that has transformed the lives of countless participants.",
-  practices: ["Mindfulness practices", "Compassionate coaching", "Holistic approaches", "Supportive community"],
+  lead: "Empower your teen to build confidence, manage emotions, overcome challenges, and develop a positive mindset for life.",
+  practices: ["Personalised growth guidance", "Emotional resilience building", "Confidence development", "Positive mindset cultivation"],
   outcomes: [
     { title: "Achieved calm", note: "Better mental health" },
     { title: "Lifetime skills", note: "Lasting change" },
@@ -58,73 +58,59 @@ export const features = [
 ] as const;
 
 export const about = {
-  title: "Reclaim your mind, reclaim your peace",
-  lead: "Discover our transformative online program designed to help you cultivate inner harmony and resilience through mindful practices.",
+  title: "Build confidence, strengthen your mind",
+  lead: "Discover a personalised journey designed to help your teen manage emotions, overcome challenges, build resilience, and develop a positive mindset for life.",
   trailer: { length: "12 min intro", reach: "25K+ participants" },
   pillars: [
     {
-      title: "Mindful techniques",
-      body: "Experience peace through our guided mindfulness practices tailored to your needs.",
+      title: "Confidence & self-awareness",
+      body: "Encourage your teen to understand their emotions, trust their abilities, and express themselves with greater confidence.",
     },
     {
-      title: "Professional mentorship",
-      body: "Receive insights from mental health professionals with years of expertise.",
+      title: "Supportive parent-child connection",
+      body: "Build better understanding and communication between you and your teen through guided sessions that encourage growth together.",
     },
     {
-      title: "Supportive community",
-      body: "Connect with others on a similar journey for encouragement and support.",
+      title: "Practical life skills",
+      body: "Equip your teen with essential skills to make thoughtful decisions, manage emotions, and handle real-life situations.",
     },
   ],
-  closing: "Eager to explore your potential? Watch the complete preview and uncover the methods transforming lives.",
+  closing:
+    "Ready to help your teen thrive? Discover the MiTran Global Positivity Hub and take the first step towards building confidence, emotional strength, and a positive future.",
 };
 
 export const struggles = {
-  title: "Does any of this sound like you?",
-  lead: "These are the moments the course was built for.",
+  title: "Does Your Teen Relate to Any of These?",
+  lead: "These are the everyday challenges the MiTran Global Positivity Hub is designed to help your child navigate.",
   items: [
     {
-      q: "Feeling overwhelmed?",
-      a: "It's normal to feel lost sometimes, but our course provides a path to clarity and stability.",
+      q: "Feeling overwhelmed by pressure?",
+      a: "Exams, expectations, and everyday challenges can feel like a lot. Help your teen understand their emotions and face pressure with greater confidence.",
     },
     {
-      q: "Struggling with motivation?",
-      a: "Our course teaches methods to reignite your passion and drive.",
+      q: "Struggling to stay motivated?",
+      a: "When distractions take over or setbacks feel discouraging, help your teen rediscover their focus, build positive habits, and take small steps forward.",
     },
     {
-      q: "Struggling to connect?",
-      a: "Discover how to foster connections and thereby improve your mental health through our strategies.",
+      q: "Finding it difficult to express themselves?",
+      a: "Sometimes, teens find it hard to share what they feel or connect with others. Help your child develop self-awareness, communicate openly, and build healthier relationships.",
     },
     {
-      q: "Finding it hard to relax?",
-      a: "Learn effective techniques to unwind and embrace a calmer state of mind.",
+      q: "Finding it hard to manage emotions?",
+      a: "Frustration, worry, and self-doubt are part of growing up. Help your teen develop emotional strength and practical ways to respond to challenging situations.",
     },
   ],
 };
 
 export const curriculum = {
-  title: "Transform your mindset",
-  lead: "Embrace a journey of healing and resilience while unlocking your true potential through our online mental health course.",
-  modules: [
-    {
-      title: "Emotional intelligence development",
-      body: "Enhancing self-awareness and managing emotions effectively.",
-    },
-    {
-      title: "Coping strategies for anxiety",
-      body: "Techniques to manage anxiety and enhance mental clarity.",
-    },
-    {
-      title: "Mindfulness and meditation techniques",
-      body: "Practices to cultivate mindfulness and reduce stress levels.",
-    },
-    {
-      title: "Cultivating resilience",
-      body: "Building mental strength and overcoming challenges.",
-    },
-    {
-      title: "Nourishing relationships",
-      body: "Building healthier, more supportive connections with the people around you.",
-    },
+  title: "Every Child Deserves the Opportunity to Grow from Within",
+  paragraphs: [
+    "You don't have to wait for your child to struggle before investing in their emotional well-being.",
+    "Whether your child needs support with confidence, exam pressure, focus, or everyday challenges, the MiTran Global Positivity Hub offers a personalised journey to help you understand your child better and support their growth.",
+  ],
+  emphasis: [
+    "Take the first step towards a more confident, emotionally stronger child.",
+    "Connect with MiTran Global to explore the program and enrol your child.",
   ],
 };
 
@@ -291,20 +277,20 @@ export const quiz = {
 
 export const faqs = [
   {
-    q: "Who leads the handholding sessions?",
-    a: "A trained and certified Transformation Coach. Two of the three sessions are for parent and child together, and one is exclusively for the child.",
+    q: "Is this an academic course?",
+    a: "No. Its primary focus is emotional well-being, confidence, mindset, and life skills.",
   },
   {
-    q: "What's the difference between the two plans?",
-    a: "Foundation includes 3 personalised handholding sessions and a personalised well-being report. The Complete course adds the bonus: micro lessons in 6 areas of challenge, 3 flagship courses (I Love Exams, Accelerated Learning Methodologies and Positive Mind Mastery) and group masterclasses.",
+    q: "Is the report a psychological diagnosis?",
+    a: "No. It is intended for well-being awareness and personal development, not clinical diagnosis.",
   },
   {
-    q: "What if the course isn't right for us?",
-    a: "Every plan comes with a 30-day money-back guarantee. If it isn't helping, contact us within 30 days of purchase for a full refund.",
+    q: "What exactly will my child receive?",
+    a: "Three personalised handholding sessions, a personalised well-being report, and additional bonus resources.",
   },
   {
-    q: "Is this a replacement for therapy?",
-    a: "No. The programme builds well-being skills and is not a medical or clinical service. If your child is struggling, please also speak with a qualified mental health professional.",
+    q: "Is this suitable for a child who is already doing well?",
+    a: "Yes. The program also supports children who want to strengthen their existing abilities and personal growth.",
   },
 ];
 

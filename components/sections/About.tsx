@@ -5,7 +5,7 @@ import Reveal from "@/components/ui/Reveal";
 import { about } from "@/lib/content";
 import { useLightbox } from "@/store/lightbox";
 
-const pillarIcons = ["leaf", "book", "people"] as const;
+const pillarIcons = ["spark", "people", "leaf"] as const;
 
 function TrailerArt() {
   // Illustrated poster: sun rising over calm water.
@@ -82,7 +82,7 @@ export default function About() {
           ))}
         </Reveal>
 
-        <p className="mt-14 max-w-prose text-white/70">{about.closing}</p>
+        <p className="mt-14 max-w-prose text-lg leading-relaxed text-white">{about.closing}</p>
       </div>
     </section>
   );
