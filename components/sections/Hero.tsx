@@ -1,6 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
+import phLogo from "@/public/positivity-hub-logo.png";
 import Icon from "@/components/ui/Icon";
 import { WavyBackground } from "@/components/ui/wavy-background";
 import { hero } from "@/lib/content";
@@ -37,8 +39,11 @@ export default function Hero() {
         {/* Soft wash keeps the copy legible where the waves pass behind it. */}
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(238,243,241,0.92)_0%,rgba(238,243,241,0.7)_45%,rgba(238,243,241,0)_80%)]" aria-hidden="true" />
 
-        <div className="container relative flex flex-1 flex-col justify-center pb-10 pt-10 sm:pt-14 lg:pb-14">
+        <div className="container relative flex flex-1 flex-col justify-center pb-10 pt-10 sm:pt-14 lg:grid lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-12 lg:pb-14">
           <div className="max-w-[40rem]">
+            <motion.div {...rise(0)} className="mb-5 lg:hidden">
+              <Image src={phLogo} alt="MiTran Global #positivity hub, for ages 11 to 17" priority className="h-28 w-28 sm:h-32 sm:w-32" sizes="128px" />
+            </motion.div>
             <motion.h1 {...rise(0)} className="font-display text-display-xl text-ink">
               {hero.title}
             </motion.h1>
@@ -77,6 +82,9 @@ export default function Hero() {
               </dl>
             </motion.div>
           </div>
+          <motion.div {...rise(2)} className="hidden lg:block">
+            <Image src={phLogo} alt="MiTran Global #positivity hub, for ages 11 to 17" priority className="h-auto w-[300px] drop-shadow-xl xl:w-[340px]" sizes="340px" />
+          </motion.div>
         </div>
 
         <div className="container relative pb-6">
