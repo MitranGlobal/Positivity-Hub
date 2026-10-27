@@ -12,8 +12,6 @@ export const site = {
    * shows a "coming soon" note instead of a broken player.
    */
   trailerSrc: "",
-  /** One breathing cycle in seconds, shared by the 3D orb and its caption. */
-  breath: { inhale: 4, exhale: 6 },
 };
 
 export const nav = [

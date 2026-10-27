@@ -61,15 +61,6 @@ const config: Config = {
       maxWidth: {
         prose: "62ch",
       },
-      keyframes: {
-        breathe: {
-          "0%, 100%": { transform: "scale(0.86)", opacity: "0.7" },
-          "40%": { transform: "scale(1)", opacity: "1" },
-        },
-      },
-      animation: {
-        breathe: "breathe 10s ease-in-out infinite",
-      },
     },
   },
   plugins: [],

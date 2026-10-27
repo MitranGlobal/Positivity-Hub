@@ -6,7 +6,7 @@ Single-page site for the Positivity Hub online mental wellness course by Mitran 
 
 - Next.js 14 (App Router, TypeScript)
 - Tailwind CSS v3 — design tokens in `tailwind.config.ts`
-- Three.js + React Three Fiber + Drei — breathing-orb hero (`components/three/BreathingOrb.tsx`)
+- Aceternity UI Wavy Background — hero background (`components/ui/wavy-background.tsx`, canvas + `simplex-noise`)
 - Framer Motion — nav, mobile drawer, testimonials, lightbox, quiz transitions
 - GSAP + ScrollTrigger — scroll reveals (`components/ui/Reveal.tsx`)
 - Zustand — lightbox state (`store/lightbox.ts`)
@@ -38,6 +38,6 @@ Import this repository at vercel.com/new. The defaults (Framework: Next.js, `npm
 
 ## Notes
 
-- Respects `prefers-reduced-motion`: the orb holds still, reveals and transitions are disabled.
-- Falls back to a CSS orb when WebGL is unavailable; the 3D scene pauses when scrolled out of view or behind the trailer popup.
-- Avoid `backdrop-filter` on layers above the WebGL hero — it stalls frame rendering on weaker GPUs.
+- Respects `prefers-reduced-motion`: the hero waves render as a still frame, reveals and transitions are disabled.
+- The wave animation pauses when the hero is off-screen or the trailer popup is open.
+- `lib/utils.ts` provides the shadcn-style `cn()` helper Aceternity components expect. The project uses Tailwind v3 and has no `components.json`, so add further Aceternity/shadcn components by copying their files rather than with the shadcn CLI.
