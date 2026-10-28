@@ -56,7 +56,7 @@ export default function Lightbox() {
 
   return (
     <motion.div
-      className="fixed inset-0 z-[60] flex items-center justify-center bg-ink/85 p-4 sm:p-8"
+      className="fixed inset-0 z-[60] flex items-center justify-center bg-stage/85 p-4 sm:p-8"
       style={{ pointerEvents: isOpen ? "auto" : "none" }}
       initial={{ opacity: 0 }}
       animate={{ opacity: isOpen ? 1 : 0 }}
@@ -86,17 +86,17 @@ export default function Lightbox() {
         >
           <Icon name="close" />
         </button>
-        <div className={`w-full overflow-hidden rounded-panel bg-lagoon-night ${site.trailerSrc ? "aspect-video" : "sm:aspect-video"}`}>
+        <div className={`w-full overflow-hidden rounded-panel bg-stage-card ${site.trailerSrc ? "aspect-video" : "sm:aspect-video"}`}>
           {site.trailerSrc ? (
             isOpen && (
               // eslint-disable-next-line jsx-a11y/media-has-caption
               <video src={site.trailerSrc} controls autoPlay playsInline className="h-full w-full object-contain" />
             )
           ) : (
-            <div className="grid h-full place-items-center px-6 py-12 text-center text-white">
+            <div className="grid h-full place-items-center px-6 py-12 text-center text-ivory">
               <div>
                 <p className="font-display text-display-md">The {about.trailer.length} is on its way</p>
-                <p className="mx-auto mt-3 max-w-md text-white/70">The full preview will be available here soon. In the meantime, you can see everything the program includes.</p>
+                <p className="mx-auto mt-3 max-w-md text-ivory/70">The full preview will be available here soon. In the meantime, you can see everything the program includes.</p>
                 <a href="#pricing" onClick={close} className="btn-primary mt-6">
                   See what&apos;s included
                 </a>

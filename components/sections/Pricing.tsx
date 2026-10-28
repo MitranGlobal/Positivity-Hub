@@ -5,27 +5,27 @@ import { plan, pricing, site } from "@/lib/content";
 
 export default function Pricing() {
   return (
-    <section id="pricing" aria-labelledby="pricing-title" className="section bg-white">
+    <section id="pricing" aria-labelledby="pricing-title" className="section bg-gold">
       <div className="container">
         <Reveal className="mx-auto max-w-2xl text-center">
           <h2 id="pricing-title" className="section-title">
             {pricing.title}
           </h2>
-          <p className="section-lead mx-auto">{pricing.lead}</p>
+          <p className="section-lead mx-auto text-ink/75">{pricing.lead}</p>
         </Reveal>
 
         <Reveal className="mx-auto mt-14 max-w-xl">
-          <article aria-labelledby="plan-title" className="rounded-panel bg-ink p-7 text-white shadow-lift sm:p-10">
-            <h3 id="plan-title" className="font-display text-display-md text-white">
+          <article aria-labelledby="plan-title" className="rounded-panel bg-white p-7 text-ink shadow-[0_40px_80px_-40px_rgba(8,9,12,0.45)] sm:p-10">
+            <h3 id="plan-title" className="font-display text-display-md text-ink">
               {plan.name}
             </h3>
-            <p className="mt-2 text-white/70">{plan.tagline}</p>
+            <p className="mt-2 text-ink-soft">{plan.tagline}</p>
             <div className="mt-6">
-              <Price price={plan.price} was={plan.was} tone="light" />
+              <Price price={plan.price} was={plan.was} tone="ink" />
             </div>
             <div className="h-8" aria-hidden="true" />
-            <BenefitList groups={plan.groups} tone="light" />
-            <a href={site.registerUrl} className="btn-primary mt-10 w-full">
+            <BenefitList groups={plan.groups} tone="ink" />
+            <a href={site.registerUrl} className="btn-ink mt-10 w-full">
               {plan.cta}
             </a>
           </article>

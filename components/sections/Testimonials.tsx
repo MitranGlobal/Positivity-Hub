@@ -7,7 +7,7 @@ import Icon from "@/components/ui/Icon";
 import Reveal from "@/components/ui/Reveal";
 import { testimonials } from "@/lib/content";
 
-const avatarTones = ["bg-marigold text-ink", "bg-lagoon text-white", "bg-blush text-ink", "bg-ink text-white"];
+const avatarTones = ["bg-gold text-ink", "bg-stage text-ivory", "bg-mist-deep text-ink", "bg-gold-deep text-ink"];
 const initials = (name: string) =>
   name
     .split(" ")
@@ -81,7 +81,7 @@ export default function Testimonials() {
                   onClick={() => go(i)}
                   aria-pressed={i === index}
                   className={`rounded-full px-3.5 py-2 text-sm font-medium transition-colors ${
-                    i === index ? "bg-ink text-white" : "bg-mist text-ink-soft hover:text-ink"
+                    i === index ? "bg-ink text-ivory" : "bg-mist-deep text-ink-soft hover:text-ink"
                   }`}
                 >
                   {it.name.split(" ")[0]}
@@ -112,7 +112,7 @@ function Quote({ item, tone }: { item: (typeof testimonials.items)[number]; tone
       <figcaption className="mt-7 flex flex-wrap items-center gap-x-8 gap-y-4">
         <span className="flex items-center gap-3">
           {item.photo ? (
-            <Image src={item.photo} alt={item.name} width={56} height={56} className="h-14 w-14 shrink-0 rounded-full object-cover ring-2 ring-white shadow-md" />
+            <Image src={item.photo} alt={item.name} width={56} height={56} className="h-14 w-14 shrink-0 rounded-full object-cover ring-2 ring-gold shadow-md" />
           ) : (
             <span className={`grid h-14 w-14 shrink-0 place-items-center rounded-full font-semibold ${tone}`} aria-hidden="true">
               {initials(item.name)}

@@ -13,10 +13,10 @@
     overflow-x: clip;
   }
   ::selection {
-    @apply bg-marigold-soft text-ink;
+    @apply bg-gold/40 text-ink;
   }
   :focus-visible {
-    outline: 3px solid #b87a0e;
+    outline: 3px solid #c99b3a;
     outline-offset: 3px;
     border-radius: 6px;
   }
@@ -39,13 +39,16 @@
     @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full px-6 text-[15px] font-semibold transition-colors duration-200;
   }
   .btn-primary {
-    @apply btn bg-marigold text-ink hover:bg-[#f0a81c];
+    @apply btn bg-gold-gradient text-ink shadow-glow hover:brightness-105;
   }
   .btn-ink {
-    @apply btn bg-ink text-white hover:bg-lagoon-night;
+    @apply btn bg-ink text-ivory hover:bg-black;
   }
   .btn-ghost {
     @apply btn border border-ink/25 text-ink hover:border-ink hover:bg-white/60;
+  }
+  .btn-light {
+    @apply btn bg-ivory text-ink hover:bg-white;
   }
   .section {
     @apply py-20 sm:py-28;

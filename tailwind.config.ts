@@ -2,8 +2,7 @@ import type { Config } from "tailwindcss";
 
 /**
  * Positivity Hub design tokens.
- * Palette idea: "first light after rain" — deep sea ink, rain-washed mist,
- * lagoon teal for calm, and marigold as the single warm accent.
+ * Colours follow the MiTran Global brand sites: black stage, ivory paper, gold accent.
  */
 const config: Config = {
   content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./lib/**/*.{ts,tsx}"],
@@ -15,29 +14,33 @@ const config: Config = {
     },
     extend: {
       colors: {
+        // Palette matches the MiTran Global sites (see Parent-Live-Sessions-Landing-Page):
+        // near-black stage, warm ivory paper, and MiTran gold as the single accent.
         ink: {
-          DEFAULT: "#17324D",
-          soft: "#4A6178",
-          faint: "#7D8FA0",
+          DEFAULT: "#08090c", // text on light surfaces
+          soft: "#4a4c55",
+          faint: "#6b6d76",
         },
+        ivory: "#f5f4ef", // text on dark surfaces
         mist: {
-          DEFAULT: "#EEF3F1",
-          deep: "#DCE7E3",
-          line: "#C9D8D3",
+          DEFAULT: "#f5f4ef", // "paper" page background
+          deep: "#ebe8df",
+          line: "#dcd8cc",
         },
-        lagoon: {
-          DEFAULT: "#2F7F7A",
-          deep: "#1F5C58",
-          night: "#143E3C",
+        stage: {
+          DEFAULT: "#08090c", // near-black bands
+          soft: "#0e1015",
+          card: "#12141a",
         },
-        marigold: {
-          DEFAULT: "#F5B83D",
-          deep: "#B87A0E",
-          soft: "#FCE7B8",
+        gold: {
+          DEFAULT: "#e9c46a",
+          bright: "#f5d17a",
+          deep: "#c99b3a",
+          text: "#7a5a12", // gold for small text on light surfaces (readable contrast)
         },
-        blush: {
-          DEFAULT: "#F6D3C4",
-        },
+      },
+      backgroundImage: {
+        "gold-gradient": "linear-gradient(135deg, #f5d17a 0%, #e9c46a 40%, #c99b3a 100%)",
       },
       fontFamily: {
         display: ['"Young Serif"', "Georgia", "serif"],
@@ -55,8 +58,8 @@ const config: Config = {
         chip: "10px",
       },
       boxShadow: {
-        lift: "0 24px 60px -28px rgba(23, 50, 77, 0.35)",
-        glow: "0 18px 40px -16px rgba(245, 184, 61, 0.55)",
+        lift: "0 24px 60px -28px rgba(8, 9, 12, 0.45)",
+        glow: "0 0 60px -12px rgba(233, 196, 106, 0.45)",
       },
       maxWidth: {
         prose: "62ch",

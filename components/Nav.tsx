@@ -44,22 +44,22 @@ export default function Nav() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed inset-x-0 top-0 z-40 transition-[background-color,box-shadow,border-color] duration-300 ${
-          scrolled ? "border-b border-mist-line/70 bg-mist/95" : "border-b border-transparent"
+          scrolled ? "bg-stage shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)]" : "bg-stage"
         }`}
       >
         <div className="container flex h-[72px] items-center justify-between gap-4">
-          <Logo />
+          <Logo onDark />
           <nav aria-label="Main" className="hidden items-center gap-1 md:flex">
             {nav.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="rounded-full px-4 py-2 text-[15px] font-medium text-ink-soft transition-colors hover:bg-white/70 hover:text-ink"
+                className="rounded-full px-4 py-2 text-[15px] font-medium text-ivory/80 transition-colors hover:text-gold"
               >
                 {item.label}
               </a>
             ))}
-            <a href={site.registerUrl} className="btn-ink ml-3 min-h-[44px] px-5">
+            <a href={site.registerUrl} className="btn-primary ml-3 min-h-[44px] px-5">
               Register now
             </a>
           </nav>
@@ -67,7 +67,7 @@ export default function Nav() {
             ref={menuBtnRef}
             type="button"
             onClick={() => setOpen(true)}
-            className="grid h-11 w-11 place-items-center rounded-full text-ink hover:bg-white/70 md:hidden"
+            className="grid h-11 w-11 place-items-center rounded-full text-ivory hover:bg-white/10 md:hidden"
             aria-label="Open menu"
             aria-expanded={open}
             aria-controls="mobile-drawer"
@@ -82,7 +82,7 @@ export default function Nav() {
           <>
             <motion.div
               key="scrim"
-              className="fixed inset-0 z-50 bg-ink/40 md:hidden"
+              className="fixed inset-0 z-50 bg-black/60 md:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0, transition: { duration: 0.25 } }}
@@ -95,7 +95,7 @@ export default function Nav() {
               role="dialog"
               aria-modal="true"
               aria-label="Menu"
-              className="fixed inset-y-0 right-0 z-50 flex w-[min(86vw,340px)] flex-col bg-mist px-6 pb-8 pt-4 shadow-lift md:hidden"
+              className="fixed inset-y-0 right-0 z-50 flex w-[min(86vw,340px)] flex-col bg-stage px-6 pb-8 pt-4 text-ivory shadow-lift md:hidden"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%", transition: { duration: 0.25, ease: [0.4, 0, 1, 1] } }}
@@ -106,7 +106,7 @@ export default function Nav() {
                   ref={closeRef}
                   type="button"
                   onClick={() => setOpen(false)}
-                  className="grid h-11 w-11 place-items-center rounded-full hover:bg-white"
+                  className="grid h-11 w-11 place-items-center rounded-full hover:bg-white/10"
                   aria-label="Close menu"
                 >
                   <Icon name="close" className="h-6 w-6" />
@@ -118,7 +118,7 @@ export default function Nav() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setOpen(false)}
-                    className="border-b border-mist-line py-4 font-display text-2xl text-ink"
+                    className="border-b border-white/10 py-4 font-display text-2xl text-ivory"
                     initial={{ opacity: 0, x: 24 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.08 + i * 0.06 }}
