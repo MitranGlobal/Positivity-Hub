@@ -1,3 +1,4 @@
+import Blend from "@/components/ui/Blend";
 import Icon from "@/components/ui/Icon";
 import Price from "@/components/ui/Price";
 import BenefitList from "@/components/ui/BenefitList";
@@ -6,7 +7,8 @@ import { curriculum, plan, site } from "@/lib/content";
 
 export default function Curriculum() {
   return (
-    <section id="course" aria-labelledby="course-title" className="section bg-stage text-ivory">
+    <section id="course" aria-labelledby="course-title" className="section blend-pad relative bg-stage text-ivory">
+      <Blend from="gold" to="stage" />
       <div className="container">
         <Reveal className="max-w-3xl">
           <h2 id="course-title" className="section-title text-ivory">

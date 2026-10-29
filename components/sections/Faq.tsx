@@ -1,5 +1,7 @@
 "use client";
 
+import Blend from "@/components/ui/Blend";
+
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Icon from "@/components/ui/Icon";
@@ -9,7 +11,8 @@ import { faqs } from "@/lib/content";
 export default function Faq() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section id="help" aria-labelledby="help-title" className="section">
+    <section id="help" aria-labelledby="help-title" className="section blend-pad relative">
+      <Blend from="gold" to="paper" />
       <div className="container grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         <Reveal>
           <h2 id="help-title" className="section-title">

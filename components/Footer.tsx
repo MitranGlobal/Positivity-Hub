@@ -1,3 +1,4 @@
+import Blend from "@/components/ui/Blend";
 import Logo from "@/components/ui/Logo";
 import { nav, site } from "@/lib/content";
 
@@ -5,8 +6,9 @@ export default function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="relative overflow-hidden bg-stage text-ivory">
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(201,155,58,0.55)_0%,rgba(233,196,106,0.25)_35%,rgba(8,9,12,0.35)_65%,#000_100%)]" aria-hidden="true" />
-      <div className="container relative py-16 sm:py-24">
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 top-32 sm:top-44 bg-[linear-gradient(180deg,rgba(201,155,58,0.55)_0%,rgba(233,196,106,0.25)_35%,rgba(8,9,12,0.35)_65%,#000_100%)]" aria-hidden="true" />
+      <Blend from="paper" to="footer" />
+      <div className="container blend-pad relative pb-16 sm:pb-24">
         <div className="max-w-2xl">
           <h2 className="font-display text-display-lg text-ivory [text-shadow:0_4px_40px_rgba(0,0,0,0.35)]" style={{ textWrap: "balance" }}>
             Your teen’s journey to confidence and emotional strength starts here.

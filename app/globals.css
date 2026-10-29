@@ -58,6 +58,11 @@
   .section {
     @apply py-20 sm:py-28;
   }
+  /* Soft section hand-off (see components/ui/Blend.tsx): the band and the
+     extra top padding are the same height, so content starts after the fade. */
+  .blend-band {
+    @apply h-32 sm:h-44;
+  }
   .section-title {
     @apply font-display text-display-lg text-ink;
     text-wrap: balance;
@@ -65,5 +70,15 @@
   .section-lead {
     @apply mt-4 max-w-prose text-lg leading-relaxed text-ink-soft;
     text-wrap: pretty;
+  }
+}
+
+/* Declared after the utilities so it wins over .section's top padding. */
+.blend-pad {
+  padding-top: 8rem;
+}
+@media (min-width: 640px) {
+  .blend-pad {
+    padding-top: 11rem;
   }
 }
