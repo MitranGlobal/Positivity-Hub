@@ -31,6 +31,11 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
+    /* Keep the challenge cards drifting, just much slower. */
+    .animate-marquee {
+      animation-duration: 120s !important;
+      animation-iteration-count: infinite !important;
+    }
   }
 }
 

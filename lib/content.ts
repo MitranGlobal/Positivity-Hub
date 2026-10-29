@@ -62,24 +62,38 @@ export const about = {
     "Ready to help your teen thrive? Discover the MiTran Global Positivity Hub and take the first step towards building confidence, emotional strength, and a positive future.",
 };
 
-export const struggles = {
-  title: "Does Your Teen Relate to Any of These?",
+export type CardShape = "wide" | "tall" | "square";
+
+export const struggles: {
+  title: string;
+  lead: string;
+  items: { q: string; a: string; image: string; shape: CardShape }[];
+} = {
+  title: "Does This Sound Like Your Teen?",
   lead: "These are the everyday challenges the MiTran Global Positivity Hub is designed to help your child navigate.",
   items: [
     {
       q: "Feeling overwhelmed by pressure?",
+      image: "/challenges/pressure.webp",
+      shape: "square",
       a: "Exams, expectations, and everyday challenges can feel like a lot. Help your teen understand their emotions and face pressure with greater confidence.",
     },
     {
       q: "Struggling to stay motivated?",
+      image: "/challenges/motivation.webp",
+      shape: "wide",
       a: "When distractions take over or setbacks feel discouraging, help your teen rediscover their focus, build positive habits, and take small steps forward.",
     },
     {
       q: "Finding it difficult to express themselves?",
+      image: "/challenges/expression.webp",
+      shape: "tall",
       a: "Sometimes, teens find it hard to share what they feel or connect with others. Help your child develop self-awareness, communicate openly, and build healthier relationships.",
     },
     {
       q: "Finding it hard to manage emotions?",
+      image: "/challenges/emotions.webp",
+      shape: "wide",
       a: "Frustration, worry, and self-doubt are part of growing up. Help your teen develop emotional strength and practical ways to respond to challenging situations.",
     },
   ],
