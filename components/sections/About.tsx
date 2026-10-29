@@ -1,7 +1,5 @@
 "use client";
 
-import Blend from "@/components/ui/Blend";
-
 import Icon from "@/components/ui/Icon";
 import Reveal from "@/components/ui/Reveal";
 import { about, site } from "@/lib/content";
@@ -44,8 +42,7 @@ export default function About() {
   const open = useLightbox((s) => s.open);
 
   return (
-    <section id="about" className="section blend-pad relative bg-gold text-ink">
-      <Blend from="paper" to="gold" />
+    <section id="about" className="section bg-gold text-ink">
       <div className="container">
         <Reveal className="max-w-3xl">
           <h2 className="font-display text-display-lg text-ink" style={{ textWrap: "balance" }}>

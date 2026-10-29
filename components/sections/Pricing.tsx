@@ -1,4 +1,3 @@
-import Blend from "@/components/ui/Blend";
 import Price from "@/components/ui/Price";
 import BenefitList from "@/components/ui/BenefitList";
 import Reveal from "@/components/ui/Reveal";
@@ -6,8 +5,7 @@ import { plan, pricing, site } from "@/lib/content";
 
 export default function Pricing() {
   return (
-    <section id="pricing" aria-labelledby="pricing-title" className="section blend-pad relative bg-gold">
-      <Blend from="paper" to="gold" />
+    <section id="pricing" aria-labelledby="pricing-title" className="section bg-gold">
       <div className="container">
         <Reveal className="mx-auto max-w-2xl text-center">
           <h2 id="pricing-title" className="section-title">

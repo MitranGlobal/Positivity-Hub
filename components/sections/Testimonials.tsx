@@ -1,7 +1,5 @@
 "use client";
 
-import Blend from "@/components/ui/Blend";
-
 import Image from "next/image";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -34,8 +32,7 @@ export default function Testimonials() {
   const t = items[index];
 
   return (
-    <section id="reviews" aria-labelledby="reviews-title" className="section blend-pad relative">
-      <Blend from="stage" to="paper" />
+    <section id="reviews" aria-labelledby="reviews-title" className="section">
       <div className="container">
         <Reveal className="max-w-3xl">
           <h2 id="reviews-title" className="section-title">
