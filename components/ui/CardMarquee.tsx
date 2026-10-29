@@ -32,13 +32,13 @@ export default function CardMarquee({ items, label }: { items: Item[]; label: st
         return (
           <li
             key={`${item.q}-${i}`}
-            className={`relative h-[400px] shrink-0 overflow-hidden rounded-[20px] bg-stage sm:h-[380px] ${widths[item.shape]}`}
+            className={`relative h-[400px] shrink-0 overflow-hidden rounded-[20px] border-b-4 border-gold bg-stage sm:h-[380px] ${widths[item.shape]}`}
             aria-hidden={dup || undefined}
           >
             <Image src={item.image} alt="" fill sizes={sizes[item.shape]} className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/5" aria-hidden="true" />
             <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
-              <h3 className="max-w-[22ch] font-display text-[22px] leading-tight text-ivory md:text-2xl">{item.q}</h3>
+              <h3 className="max-w-[22ch] font-display text-[22px] leading-tight text-gold-bright md:text-2xl">{item.q}</h3>
               <p className="mt-3 max-w-[40ch] text-[15px] leading-relaxed text-ivory/85">{item.a}</p>
             </div>
           </li>

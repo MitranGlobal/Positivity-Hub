@@ -1,4 +1,3 @@
-import Icon from "@/components/ui/Icon";
 import Price from "@/components/ui/Price";
 import BenefitList from "@/components/ui/BenefitList";
 import Reveal from "@/components/ui/Reveal";
@@ -47,10 +46,6 @@ export default function Curriculum() {
               <a href={site.registerUrl} className="btn-ink mt-8 w-full">
                 Enroll now
               </a>
-              <p className="mt-4 flex items-center justify-center gap-2 text-sm text-ink-soft">
-                <Icon name="shield" className="h-4 w-4" />
-                30-day money-back guarantee
-              </p>
             </div>
           </aside>
         </div>

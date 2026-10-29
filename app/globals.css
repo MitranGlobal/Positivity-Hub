@@ -58,6 +58,10 @@
   .section {
     @apply py-20 sm:py-28;
   }
+  /* Short gold bar that marks section headings on ivory backgrounds. */
+  .gold-rule {
+    @apply mb-6 block h-1.5 w-16 rounded-full bg-gold-gradient;
+  }
   .section-title {
     @apply font-display text-display-lg text-ink;
     text-wrap: balance;

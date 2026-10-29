@@ -36,12 +36,13 @@ export default function Testimonials() {
       <div className="container">
         <Reveal className="max-w-3xl">
           <h2 id="reviews-title" className="section-title">
+            <span className="gold-rule" aria-hidden="true" />
             {testimonials.title}
           </h2>
           <p className="section-lead">{testimonials.lead}</p>
         </Reveal>
 
-        <div className="mt-12 rounded-panel bg-white p-6 shadow-lift sm:p-10 lg:p-14">
+        <div className="mt-12 rounded-panel border-t-4 border-gold bg-white p-6 shadow-lift sm:p-10 lg:p-14">
           <div className="grid" aria-live="polite">
             {/* Invisible sizer: reserves the height of the longest testimonial so the card never jumps. */}
             {items.map((it) => (
@@ -81,7 +82,7 @@ export default function Testimonials() {
                   onClick={() => go(i)}
                   aria-pressed={i === index}
                   className={`rounded-full px-3.5 py-2 text-sm font-medium transition-colors ${
-                    i === index ? "bg-ink text-ivory" : "bg-mist-deep text-ink-soft hover:text-ink"
+                    i === index ? "bg-gold text-ink" : "bg-mist-deep text-ink-soft hover:bg-gold/30 hover:text-ink"
                   }`}
                 >
                   {it.name.split(" ")[0]}
@@ -89,10 +90,10 @@ export default function Testimonials() {
               ))}
             </div>
             <div className="flex gap-2">
-              <button type="button" onClick={() => go(index - 1)} className="grid h-11 w-11 place-items-center rounded-full border border-ink/20 hover:border-ink" aria-label="Previous testimonial">
+              <button type="button" onClick={() => go(index - 1)} className="grid h-11 w-11 place-items-center rounded-full border border-gold-deep/60 text-ink transition-colors hover:border-gold hover:bg-gold" aria-label="Previous testimonial">
                 <Icon name="arrow-left" />
               </button>
-              <button type="button" onClick={() => go(index + 1)} className="grid h-11 w-11 place-items-center rounded-full border border-ink/20 hover:border-ink" aria-label="Next testimonial">
+              <button type="button" onClick={() => go(index + 1)} className="grid h-11 w-11 place-items-center rounded-full border border-gold-deep/60 text-ink transition-colors hover:border-gold hover:bg-gold" aria-label="Next testimonial">
                 <Icon name="arrow-right" />
               </button>
             </div>
@@ -106,8 +107,9 @@ export default function Testimonials() {
 function Quote({ item, tone }: { item: (typeof testimonials.items)[number]; tone: string }) {
   return (
     <figure className="select-none">
+      <span className="block h-10 font-display text-7xl leading-none text-gold-deep" aria-hidden="true">“</span>
       <blockquote className="text-[17px] leading-relaxed text-ink sm:font-display sm:text-[clamp(1.1rem,1.8vw,1.45rem)] sm:leading-[1.5]" style={{ textWrap: "pretty" }}>
-        “{item.quote}”
+        {item.quote}
       </blockquote>
       <figcaption className="mt-7 flex flex-wrap items-center gap-x-8 gap-y-4">
         <span className="flex items-center gap-3">

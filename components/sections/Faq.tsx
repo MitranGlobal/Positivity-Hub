@@ -13,11 +13,12 @@ export default function Faq() {
       <div className="container grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         <Reveal>
           <h2 id="help-title" className="section-title">
+            <span className="gold-rule" aria-hidden="true" />
             Questions, answered
           </h2>
           <p className="section-lead">Everything you need to know before you begin.</p>
         </Reveal>
-        <ul className="divide-y divide-mist-line border-y border-mist-line">
+        <ul className="divide-y divide-gold/50 border-y border-gold/50">
           {faqs.map((f, i) => {
             const isOpen = open === i;
             return (
@@ -32,7 +33,7 @@ export default function Faq() {
                     className="flex w-full items-center justify-between gap-6 py-6 text-left text-lg font-semibold text-ink"
                   >
                     {f.q}
-                    <motion.span animate={{ rotate: isOpen ? 45 : 0 }} transition={{ duration: 0.25 }} className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white">
+                    <motion.span animate={{ rotate: isOpen ? 45 : 0 }} transition={{ duration: 0.25 }} className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gold text-ink">
                       <Icon name="plus" className="h-4 w-4" />
                     </motion.span>
                   </button>
