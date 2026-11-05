@@ -12,8 +12,8 @@ import { usePrefersReducedMotion } from "@/lib/useReducedMotion";
 const WAVE_COLORS = ["#e9c46a", "#c99b3a", "#f5d17a", "#8a6a1f", "#5a4512"];
 
 /**
- * Opens on the problem, not the product. The last line acts out the moment:
- * shortly after the page loads it blurs away, holds, then comes back into focus.
+ * Opens on the parent's question, not the product, following the start of the
+ * Positivity Hub VSL. The waves stay in the background.
  */
 export default function Hero() {
   const reduced = usePrefersReducedMotion();
@@ -27,7 +27,7 @@ export default function Hero() {
     transition: { duration: 0.8, delay: 0.15 + i * 0.12, ease: [0.22, 1, 0.36, 1] },
   });
 
-  const [first, second, blank] = hero.lines;
+  const [ask, world] = hero.question;
 
   return (
     <section id="top" aria-label="Introduction" className="bg-stage">
@@ -47,40 +47,37 @@ export default function Hero() {
 
         <div className="container relative flex flex-1 flex-col items-center justify-center pb-16 pt-10 text-center sm:pt-14">
           <div className="mx-auto flex max-w-[52rem] flex-col items-center">
-            <motion.p {...rise(0)} className="flex max-w-[48rem] items-center justify-center gap-3 text-base text-ivory/75 sm:text-lg">
-              <span className="hidden h-px w-8 shrink-0 bg-gold sm:block" aria-hidden="true" />
+            <motion.p {...rise(0)} className="flex items-center justify-center gap-3 text-sm font-semibold uppercase tracking-[0.14em] text-gold sm:text-[15px]">
+              <span className="hidden h-px w-8 shrink-0 bg-gold/70 sm:block" aria-hidden="true" />
               {hero.audience}
-              <span className="hidden h-px w-8 shrink-0 bg-gold sm:block" aria-hidden="true" />
+              <span className="hidden h-px w-8 shrink-0 bg-gold/70 sm:block" aria-hidden="true" />
             </motion.p>
 
-            <h1 className="mt-6 font-display text-[clamp(1.9rem,4.2vw,3.25rem)] leading-[1.12] tracking-[-0.015em] text-ivory">
+            <h1 className="mt-6 font-display text-[clamp(1.75rem,5vw,3.75rem)] leading-[1.08] tracking-[-0.015em] text-ivory" style={{ textWrap: "balance" }}>
               <motion.span {...rise(1)} className="block">
-                {first}
+                {ask}
               </motion.span>
-              <motion.span {...rise(2)} className="block">
-                {second}
-              </motion.span>
-              <motion.span {...rise(3)} className="block">
-                <motion.span
-                  className="inline-block"
-                  animate={
-                    reduced
-                      ? undefined
-                      : { filter: ["blur(0px)", "blur(0px)", "blur(14px)", "blur(14px)", "blur(0px)"], opacity: [1, 1, 0.12, 0.12, 1] }
-                  }
-                  transition={{ duration: 3.4, delay: 1.4, times: [0, 0.2, 0.42, 0.72, 1], ease: "easeInOut" }}
-                >
-                  {blank}
-                </motion.span>
+              <motion.span {...rise(2)} className="block text-gold">
+                {world}
               </motion.span>
             </h1>
 
-            <motion.p {...rise(4)} className="mt-7 max-w-[38rem] text-base leading-relaxed text-ivory/80 sm:text-lg" style={{ textWrap: "pretty" }}>
+            {/* The two patterns parents notice: effort on one side, the drop on the other. */}
+            <motion.ul {...rise(3)} className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:gap-0" aria-label="What parents notice">
+              {hero.signs.map(([effort, drop], i) => (
+                <li key={effort} className={`flex flex-wrap items-baseline justify-center gap-x-2 font-display text-lg sm:text-xl ${i > 0 ? "sm:border-l sm:border-gold/40 sm:pl-6" : "sm:pr-6"}`}>
+                  <span className="whitespace-nowrap text-ivory/60">{effort}</span>
+                  <span className="whitespace-nowrap text-ivory">{drop}</span>
+                </li>
+              ))}
+            </motion.ul>
+
+            <motion.p {...rise(4)} className="mt-7 max-w-[36rem] text-base leading-relaxed text-ivory/80 sm:text-lg" style={{ textWrap: "pretty" }}>
               {hero.lead}
             </motion.p>
 
             <motion.div {...rise(5)} className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-              <a data-cta href="#why" className="btn-primary">
+              <a data-cta href="#challenges" className="btn-primary">
                 {hero.cta}
                 <Icon name="arrow-right" className="h-4 w-4 rotate-90" />
               </a>

@@ -30,33 +30,20 @@ export const nav = [
 
 /**
  * Page story: problem first, product last.
- * Hero (the problem) → challenges carousel (recognition) → why it happens
- * (the root cause) → the approach → Positivity Hub revealed → proof → offer.
- * The problem framing follows the MiTran Global teen campaign messaging:
- * capable teens aren't lazy or weak; nobody trained them to handle pressure
- * from the inside, and every usual fix works on the outside.
+ * Hero (the question) → challenges carousel (recognition) → the approach →
+ * Positivity Hub revealed → proof → offer.
+ * The hero follows the opening of the Positivity Hub VSL: capable children
+ * who study hard and still freeze, and the shift from marks to readiness.
  */
 export const hero = {
-  audience: "For parents of capable teens who study hard, then freeze when it counts.",
-  lines: ["They studied for weeks.", "Then the paper landed,", "and everything went blank."],
-  lead: "It isn’t a knowledge gap, and it isn’t laziness. Most capable teens were never taught how to think clearly under pressure. That one missing skill shows up as blanking out, overthinking, putting things off and giving up.",
-  cta: "See why it happens",
-};
-
-export const why = {
-  title: "Every fix so far has worked on the outside.",
-  lead: "Tuition, timetables, motivation talks, phone rules. Each one is an honest attempt to help, and each one works on marks and habits. Almost none of them work on what happens inside your teen when the pressure is on.",
-  outside: ["Extra tuition", "Timetables", "Motivation talks", "Constant reminders"],
-  insideTitle: "The part nobody trains",
-  inside: ["How they think under pressure", "How they bounce back from a bad result", "How they see themselves when it gets hard"],
-  relief: "It isn’t your fault, and it isn’t your teen’s. It’s a skill that was never taught, and skills can be built.",
-  escalationTitle: "Left untrained, the pressure only grows",
-  escalation: [
-    { when: "Today", what: "Class tests" },
-    { when: "Next year", what: "Board exams" },
-    { when: "After that", what: "Entrance exams" },
-    { when: "Then", what: "College, career, life" },
+  audience: "For parents of children aged 11–17",
+  question: ["Is your child ready", "for the real world?"],
+  signs: [
+    ["Studies hard.", "Still freezes."],
+    ["Confident one day,", "doubts the next."],
   ],
+  lead: "It’s not about marks anymore. It’s whether your child can handle pressure, stay focused and believe in themselves, without you standing behind them.",
+  cta: "Does this sound like your child?",
 };
 
 /** Positivity Hub is introduced here, after the problem and the approach. */

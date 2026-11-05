@@ -28,7 +28,6 @@ const fields: { name: LeadField; label: string; type: string; autoComplete: stri
     autoComplete: "tel",
     inputMode: "tel",
     placeholder: "e.g. 98765 43210",
-    hint: "Outside India? Start with + and your country code.",
   },
   { name: "email", label: "Email", type: "email", autoComplete: "email", inputMode: "email", placeholder: "e.g. priya@example.com" },
 ];
