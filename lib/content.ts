@@ -28,8 +28,41 @@ export const nav = [
   { label: "Help", href: "#help" },
 ];
 
+/**
+ * Page story: problem first, product last.
+ * Hero (the problem) → challenges carousel (recognition) → why it happens
+ * (the root cause) → the approach → Positivity Hub revealed → proof → offer.
+ * The problem framing follows the MiTran Global teen campaign messaging:
+ * capable teens aren't lazy or weak; nobody trained them to handle pressure
+ * from the inside, and every usual fix works on the outside.
+ */
 export const hero = {
-  title: "Positivity Hub",
+  audience: "For parents of capable teens who study hard, then freeze when it counts.",
+  lines: ["They studied for weeks.", "Then the paper landed,", "and everything went blank."],
+  lead: "It isn’t a knowledge gap, and it isn’t laziness. Most capable teens were never taught how to think clearly under pressure. That one missing skill shows up as blanking out, overthinking, putting things off and giving up.",
+  cta: "See why it happens",
+};
+
+export const why = {
+  title: "Every fix so far has worked on the outside.",
+  lead: "Tuition, timetables, motivation talks, phone rules. Each one is an honest attempt to help, and each one works on marks and habits. Almost none of them work on what happens inside your teen when the pressure is on.",
+  outside: ["Extra tuition", "Timetables", "Motivation talks", "Constant reminders"],
+  insideTitle: "The part nobody trains",
+  inside: ["How they think under pressure", "How they bounce back from a bad result", "How they see themselves when it gets hard"],
+  relief: "It isn’t your fault, and it isn’t your teen’s. It’s a skill that was never taught, and skills can be built.",
+  escalationTitle: "Left untrained, the pressure only grows",
+  escalation: [
+    { when: "Today", what: "Class tests" },
+    { when: "Next year", what: "Board exams" },
+    { when: "After that", what: "Entrance exams" },
+    { when: "Then", what: "College, career, life" },
+  ],
+};
+
+/** Positivity Hub is introduced here, after the problem and the approach. */
+export const program = {
+  bridge: "That missing skill is what we build.",
+  name: "MiTran Global Positivity Hub",
   lead: "Empower your teen to build confidence, manage emotions, overcome challenges, and develop a positive mindset for life.",
   practices: ["Personalised growth guidance", "Emotional resilience building", "Confidence development", "Positive mindset cultivation"],
   proofLabel: "Supported by wellness seekers globally",
@@ -38,6 +71,7 @@ export const hero = {
     { value: "4.9★", label: "Feedback" },
     { value: "95%", label: "Success indicator" },
   ],
+  cta: "See what your child receives",
 };
 
 export const about = {
@@ -70,7 +104,7 @@ export const struggles: {
   items: { q: string; a: string; image: string; shape: CardShape }[];
 } = {
   title: "Does This Sound Like Your Teen?",
-  lead: "These are the everyday challenges the MiTran Global Positivity Hub is designed to help your child navigate.",
+  lead: "These are the everyday challenges capable teens face. Most of them come from the same place.",
   items: [
     {
       q: "Feeling overwhelmed by pressure?",

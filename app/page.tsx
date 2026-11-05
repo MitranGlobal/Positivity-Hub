@@ -5,6 +5,8 @@ import { site } from "@/lib/content";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Struggles from "@/components/sections/Struggles";
+import Why from "@/components/sections/Why";
+import Program from "@/components/sections/Program";
 import Curriculum from "@/components/sections/Curriculum";
 import Testimonials from "@/components/sections/Testimonials";
 import Pricing from "@/components/sections/Pricing";
@@ -18,11 +20,14 @@ export default function Home() {
       </a>
       <Nav />
       <main id="main">
+        {/* Problem → recognition → cause → approach → Positivity Hub → proof → offer */}
         <Hero />
         <Struggles />
+        <Why />
         <About />
-        <Curriculum />
+        <Program />
         <Testimonials />
+        <Curriculum />
         <Pricing />
         <Faq />
       </main>
