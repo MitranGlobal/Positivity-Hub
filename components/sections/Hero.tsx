@@ -5,6 +5,7 @@ import Icon from "@/components/ui/Icon";
 import { WavyBackground } from "@/components/ui/wavy-background";
 import { hero, site } from "@/lib/content";
 import { useLightbox } from "@/store/lightbox";
+import { useGate } from "@/store/gate";
 import { usePrefersReducedMotion } from "@/lib/useReducedMotion";
 
 // MiTran gold range for the waves, on the black stage.
@@ -18,6 +19,7 @@ export default function Hero() {
   const reduced = usePrefersReducedMotion();
   const openLightbox = useLightbox((s) => s.open);
   const lightboxOpen = useLightbox((s) => s.content !== null);
+  const gateOpen = useGate((s) => s.open);
 
   const rise = (i: number) => ({
     initial: reduced ? false : { opacity: 0, y: 22 },
@@ -38,7 +40,7 @@ export default function Hero() {
         waveWidth={46}
         blur={10}
         speed="slow"
-        paused={lightboxOpen}
+        paused={lightboxOpen || gateOpen}
       >
         {/* Soft wash keeps the copy legible where the waves pass behind it. */}
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_55%_at_50%_50%,rgba(8,9,12,0.88)_0%,rgba(8,9,12,0.6)_55%,rgba(8,9,12,0.15)_100%)]" aria-hidden="true" />

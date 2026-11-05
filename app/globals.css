@@ -71,3 +71,8 @@
     text-wrap: pretty;
   }
 }
+
+/* Returning visitors (see app/layout.tsx): never show the sign-up popup. */
+html[data-lead="1"] #lead-gate {
+  display: none !important;
+}
