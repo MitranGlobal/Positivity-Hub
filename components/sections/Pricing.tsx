@@ -25,7 +25,7 @@ export default function Pricing() {
             </div>
             <div className="h-8" aria-hidden="true" />
             <BenefitList groups={plan.groups} tone="ink" />
-            <a href={site.registerUrl} className="btn-ink mt-10 w-full">
+            <a data-cta href={site.registerUrl} className="btn-ink mt-10 w-full">
               {plan.cta}
             </a>
           </article>

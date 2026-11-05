@@ -1,20 +1,34 @@
 import { NextResponse } from "next/server";
+import { clarity } from "@/lib/clarity";
 import { validateLead } from "@/lib/lead";
 
 /**
- * Receives the sign-up popup's details and forwards them to LEAD_WEBHOOK_URL
- * (a Google Sheets Apps Script, Zapier/Make webhook, or your CRM's inbound
- * webhook). Set it in Vercel → Project → Settings → Environment Variables.
+ * Receives the sign-up popup's details, checks them again, and submits them
+ * to the ClarityConvert "Contact Form" (see lib/clarity.ts).
  */
 
 const MAX_BODY_BYTES = 4_000;
-const FORWARD_TIMEOUT_MS = 8_000;
+const FORWARD_TIMEOUT_MS = 10_000;
+
+/** Accept only plain http(s) URLs, trimmed, for the attribution fields. */
+function safeUrl(value: unknown, mustBeHost?: string): string | undefined {
+  if (typeof value !== "string" || value.length > 1_000) return undefined;
+  try {
+    const u = new URL(value);
+    if (u.protocol !== "https:" && u.protocol !== "http:") return undefined;
+    if (mustBeHost && u.host !== mustBeHost) return undefined;
+    return u.toString();
+  } catch {
+    return undefined;
+  }
+}
 
 export async function POST(req: Request) {
+  const host = req.headers.get("x-forwarded-host") ?? req.headers.get("host") ?? "";
+
   // Only accept submissions sent from this site's own pages.
   const origin = req.headers.get("origin");
-  const host = req.headers.get("x-forwarded-host") ?? req.headers.get("host");
-  if (origin && host) {
+  if (origin) {
     let originHost = "";
     try {
       originHost = new URL(origin).host;
@@ -51,36 +65,46 @@ export async function POST(req: Request) {
   if (!result.ok) {
     return NextResponse.json({ ok: false, errors: result.errors }, { status: 422 });
   }
+  const lead = result.value;
 
-  const lead = {
-    ...result.value,
-    submittedAt: new Date().toISOString(),
-    source: "positivity-hub-landing",
-    // Taken from the request, not the form body, so it can't carry injected text.
-    page: (req.headers.get("referer") ?? "").slice(0, 300) || undefined,
+  // Attribution: the page the visitor landed on (with any UTMs) must be this
+  // site; the referrer is wherever they came from (an ad, Google, WhatsApp…).
+  const landingPage = safeUrl(body.landingPage, host) ?? safeUrl(req.headers.get("referer"), host);
+  const referrer = safeUrl(body.referrer);
+  const idempotencyKey =
+    typeof body.idempotencyKey === "string" && /^[A-Za-z0-9-]{8,64}$/.test(body.idempotencyKey) ? body.idempotencyKey : undefined;
+
+  const payload = {
+    subAccountId: clarity.subAccountId,
+    formId: clarity.formId,
+    answers: {
+      [clarity.fields.childName]: lead.childName,
+      [clarity.fields.parentName]: lead.parentName,
+      [clarity.fields.mobile]: lead.mobile,
+      [clarity.fields.email]: lead.email,
+    },
+    meta: { referrer: referrer ?? "", landingPage: landingPage ?? "" },
+    ...(idempotencyKey ? { idempotencyKey } : {}),
   };
-
-  const webhook = process.env.LEAD_WEBHOOK_URL;
-  if (!webhook) {
-    // Not configured yet: let the visitor in, but make the gap loud in the server logs.
-    // No personal details in logs.
-    console.error(`[leads] LEAD_WEBHOOK_URL is not set; a sign-up at ${lead.submittedAt} was not saved.`);
-    return NextResponse.json({ ok: true, stored: false });
-  }
 
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), FORWARD_TIMEOUT_MS);
   try {
-    const res = await fetch(webhook, {
+    const res = await fetch(clarity.apiUrl, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(lead),
+      headers: { "Content-Type": "application/json", apikey: clarity.apiKey },
+      body: JSON.stringify(payload),
       signal: controller.signal,
     });
-    if (!res.ok) throw new Error(`Webhook responded ${res.status}`);
-    return NextResponse.json({ ok: true, stored: true });
+    const data = (await res.json().catch(() => ({}))) as { success?: boolean; error?: unknown };
+    if (!res.ok || data.success !== true) {
+      // Log the reason only — never the visitor's details.
+      console.error(`[leads] ClarityConvert rejected a sign-up (HTTP ${res.status}):`, typeof data.error === "string" ? data.error.slice(0, 200) : "no reason given");
+      return NextResponse.json({ ok: false, error: "We couldn’t save your details. Please try again." }, { status: 502 });
+    }
+    return NextResponse.json({ ok: true });
   } catch (err) {
-    console.error("[leads] Could not forward sign-up:", err instanceof Error ? err.message : err);
+    console.error("[leads] Could not reach ClarityConvert:", err instanceof Error ? err.message : err);
     return NextResponse.json({ ok: false, error: "We couldn’t save your details. Please try again." }, { status: 502 });
   } finally {
     clearTimeout(timer);

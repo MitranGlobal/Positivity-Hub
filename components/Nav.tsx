@@ -59,7 +59,7 @@ export default function Nav() {
                 {item.label}
               </a>
             ))}
-            <a href={site.registerUrl} className="btn-primary ml-3 min-h-[44px] px-5">
+            <a data-cta href={site.registerUrl} className="btn-primary ml-3 min-h-[44px] px-5">
               Register now
             </a>
           </nav>
@@ -127,7 +127,7 @@ export default function Nav() {
                   </motion.a>
                 ))}
               </nav>
-              <a href={site.registerUrl} onClick={() => setOpen(false)} className="btn-primary mt-auto w-full">
+              <a data-cta href={site.registerUrl} onClick={() => setOpen(false)} className="btn-primary mt-auto w-full">
                 Register now
               </a>
             </motion.div>

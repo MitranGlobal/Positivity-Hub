@@ -28,7 +28,7 @@ export default function Curriculum() {
                   </p>
                 ))}
               </div>
-              <a href={site.registerUrl} className="btn-primary mt-8">
+              <a data-cta href={site.registerUrl} className="btn-primary mt-8">
                 Register now
               </a>
             </div>
@@ -43,7 +43,7 @@ export default function Curriculum() {
               <div className="mt-7">
                 <BenefitList groups={plan.groups} tone="ink" compact />
               </div>
-              <a href={site.registerUrl} className="btn-ink mt-8 w-full">
+              <a data-cta href={site.registerUrl} className="btn-ink mt-8 w-full">
                 Enroll now
               </a>
             </div>

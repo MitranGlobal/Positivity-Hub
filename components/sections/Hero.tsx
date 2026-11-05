@@ -80,7 +80,7 @@ export default function Hero() {
             </motion.p>
 
             <motion.div {...rise(5)} className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-              <a href="#why" className="btn-primary">
+              <a data-cta href="#why" className="btn-primary">
                 {hero.cta}
                 <Icon name="arrow-right" className="h-4 w-4 rotate-90" />
               </a>

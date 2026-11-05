@@ -48,7 +48,7 @@ export default function Program() {
                 ))}
               </dl>
             </div>
-            <a href="#pricing" className="btn-primary self-start sm:self-auto">
+            <a data-cta href="#pricing" className="btn-primary self-start sm:self-auto">
               {program.cta}
             </a>
           </div>

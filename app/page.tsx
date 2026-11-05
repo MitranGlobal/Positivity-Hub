@@ -16,7 +16,7 @@ import Faq from "@/components/sections/Faq";
 export default function Home() {
   return (
     <>
-      {/* Everything behind the sign-up popup; made inert while it is open. */}
+      {/* Everything behind the sign-up popup (opened by CTA buttons); made inert while it is open. */}
       <div id="site">
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-full focus:bg-white focus:px-4 focus:py-2">
           Skip to content
