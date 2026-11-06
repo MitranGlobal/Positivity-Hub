@@ -7,11 +7,18 @@ export const site = {
   name: "Positivity Hub",
   by: "Mitran Global",
   /**
-   * Video/trailer is hidden for now. Set to true to bring back the video block in
-   * the "Build confidence" section, the hero's "Watch trailer" button and the
-   * trailer popup. All of that code is kept and works as before.
+   * The old "Watch trailer" button in the hero and its popup player. Kept off:
+   * the VSL below replaces them and sits behind the sign-up popup.
    */
   showTrailer: false,
+  /** The VSL in the "Build confidence" section. It only plays after the sign-up popup. */
+  vsl: {
+    src: "https://res.cloudinary.com/twteccae/video/upload/PHVSL_-_v1_hwt5ut.mp4",
+    // Cloudinary makes the still from the video itself (frame at 3s, 1600px wide).
+    poster: "https://res.cloudinary.com/twteccae/video/upload/so_3,w_1600,q_auto/PHVSL_-_v1_hwt5ut.jpg",
+    title: "Positivity Hub: a message for parents",
+    cta: "Watch now!",
+  },
   /**
    * Set this to a video URL (e.g. "/trailer.mp4" in /public, or a hosted .mp4)
    * and the "Watch trailer" lightbox will play it. While empty, the lightbox

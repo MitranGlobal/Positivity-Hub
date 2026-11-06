@@ -2,13 +2,13 @@
 
 import Icon from "@/components/ui/Icon";
 import Reveal from "@/components/ui/Reveal";
-import { about, site } from "@/lib/content";
-import { useLightbox } from "@/store/lightbox";
+import VslPlayer from "@/components/ui/VslPlayer";
+import { about } from "@/lib/content";
 
 const pillarIcons = ["spark", "people", "leaf"] as const;
 
 function TrailerArt() {
-  // Illustrated poster: sun rising over calm water.
+  // Shown behind the video until its still loads: sun rising over calm water.
   return (
     <svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" className="absolute inset-0 h-full w-full" aria-hidden="true">
       <defs>
@@ -39,8 +39,6 @@ function TrailerArt() {
 }
 
 export default function About() {
-  const open = useLightbox((s) => s.open);
-
   return (
     <section id="about" className="section bg-gold text-ink">
       <div className="container">
@@ -51,27 +49,10 @@ export default function About() {
           <p className="mt-4 max-w-prose text-lg leading-relaxed text-ink/75">{about.lead}</p>
         </Reveal>
 
-        {/* Video block: hidden while site.showTrailer is false (code kept for later). */}
-        {site.showTrailer && (
+        {/* The VSL: plays only after the sign-up popup. */}
         <Reveal className="mt-12">
-          <button
-            type="button"
-            onClick={() => open({ kind: "trailer", title: "Course trailer" })}
-            className="group relative block aspect-[16/10] w-full overflow-hidden rounded-panel text-left sm:aspect-video"
-            aria-label={`Watch the course trailer (${about.trailer.length})`}
-          >
-            <TrailerArt />
-            <span className="absolute inset-0 bg-stage/10 transition-colors group-hover:bg-stage/0" />
-            <span className="absolute left-1/2 top-[42%] grid h-20 w-20 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white text-ink shadow-lift transition-transform duration-300 group-hover:scale-105 sm:h-24 sm:w-24">
-              <Icon name="play" className="ml-1 h-8 w-8" />
-            </span>
-            <span className="absolute bottom-4 left-4 right-4 flex flex-wrap items-center justify-between gap-2 sm:bottom-6 sm:left-6 sm:right-6">
-              <span className="rounded-chip bg-white/90 px-3 py-1.5 text-sm font-medium text-ink">{about.trailer.length}</span>
-              <span className="rounded-chip bg-white/90 px-3 py-1.5 text-sm font-medium text-ink">{about.trailer.reach}</span>
-            </span>
-          </button>
+          <VslPlayer backdrop={<TrailerArt />} />
         </Reveal>
-        )}
 
         <Reveal stagger className="mt-14 grid gap-10 sm:grid-cols-3 sm:gap-8">
           {about.pillars.map((p, i) => (

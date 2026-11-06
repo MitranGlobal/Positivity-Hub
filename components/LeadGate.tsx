@@ -5,7 +5,8 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Icon from "@/components/ui/Icon";
 import logoLight from "@/public/mitran-global-logo-light.png";
-import { LEAD_STORAGE_KEY, validateLead, type LeadErrors, type LeadField } from "@/lib/lead";
+import { validateLead, type LeadErrors, type LeadField } from "@/lib/lead";
+import { hasSignedUp, rememberSignUp } from "@/lib/leadStorage";
 import { useGate } from "@/store/gate";
 
 /**
@@ -15,7 +16,8 @@ import { useGate } from "@/store/gate";
  * visitor submits, they continue to wherever that CTA was going (the checkout
  * link, or a section of this page). Visitors who already signed up on this
  * browser skip the popup and go straight through. Without JavaScript the CTAs
- * are plain links, so nobody is ever stuck.
+ * are plain links, so nobody is ever stuck. Non-link buttons (the VSL) open
+ * it with an `onDone` action, which runs after the sign-up instead.
  */
 
 const fields: { name: LeadField; label: string; type: string; autoComplete: string; inputMode?: "tel" | "email"; placeholder: string; hint?: string }[] = [
@@ -34,22 +36,6 @@ const fields: { name: LeadField; label: string; type: string; autoComplete: stri
 
 type Status = "idle" | "saving" | "error";
 
-function hasSignedUp() {
-  try {
-    return window.localStorage.getItem(LEAD_STORAGE_KEY) !== null;
-  } catch {
-    return false;
-  }
-}
-
-function rememberSignUp() {
-  try {
-    window.localStorage.setItem(LEAD_STORAGE_KEY, JSON.stringify({ at: new Date().toISOString() }));
-  } catch {
-    /* Private mode or blocked storage: they'll see the popup again next time. */
-  }
-}
-
 /** Send the visitor where the CTA was going: another site, or a section of this page. */
 function go(target: string) {
   if (target.startsWith("#")) {
@@ -67,7 +53,7 @@ const newAttemptKey = () =>
   typeof crypto !== "undefined" && "randomUUID" in crypto ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
 
 export default function LeadGate() {
-  const { open, target, openFor, close } = useGate();
+  const { open, target, onDone, opener: gateOpener, openFor, close } = useGate();
   const reduced = useReducedMotion();
   const [values, setValues] = useState<Record<LeadField, string>>({ childName: "", parentName: "", mobile: "", email: "" });
   const [errors, setErrors] = useState<LeadErrors>({});
@@ -89,7 +75,7 @@ export default function LeadGate() {
       if (!href || hasSignedUp()) return; // already signed up: let the link work as normal
       e.preventDefault();
       opener.current = link;
-      openFor(href);
+      openFor(href, { opener: link });
     };
     document.addEventListener("click", onClick, true);
     return () => document.removeEventListener("click", onClick, true);
@@ -107,6 +93,7 @@ export default function LeadGate() {
   // While open: lock scrolling, make the page behind inert, keep focus inside, Escape closes.
   useEffect(() => {
     if (!open) return;
+    if (gateOpener) opener.current = gateOpener;
     const site = document.getElementById("site");
     site?.setAttribute("inert", "");
     site?.setAttribute("aria-hidden", "true");
@@ -142,7 +129,7 @@ export default function LeadGate() {
       // Return focus to the CTA that opened the popup.
       opener.current?.focus({ preventScroll: true });
     };
-  }, [open, dismiss]);
+  }, [open, dismiss, gateOpener]);
 
   const update = (name: LeadField, value: string) => {
     setValues((v) => ({ ...v, [name]: value }));
@@ -188,7 +175,10 @@ export default function LeadGate() {
         setStatus("idle");
         opener.current = null; // don't pull focus back to the CTA; we're moving on
         close();
-        if (target) window.setTimeout(() => go(target), target.startsWith("#") ? 250 : 0);
+        // Run straight away (not after a delay) so the browser still counts it as
+        // part of the visitor's click, which lets a video start with sound.
+        if (onDone) onDone();
+        else if (target) window.setTimeout(() => go(target), target.startsWith("#") ? 250 : 0);
         return;
       }
       if (res.status === 422 && data.errors) {
@@ -255,7 +245,11 @@ export default function LeadGate() {
                 Almost there
               </h2>
               <p id={`${id}-desc`} className="mt-1.5 text-sm leading-relaxed text-ivory/65">
-                {goingToCheckout ? "Share a few details and we’ll take you straight to registration." : "Share a few details to continue."}
+                {goingToCheckout
+                  ? "Share a few details and we’ll take you straight to registration."
+                  : onDone
+                    ? "Share a few details and the video will start right away."
+                    : "Share a few details to continue."}
               </p>
 
               <form className="mt-5 space-y-3" onSubmit={onSubmit} noValidate>
